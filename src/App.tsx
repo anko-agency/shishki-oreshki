@@ -63,6 +63,36 @@ const slides = [
     buttonLabel: 'АЙС ЛАТТЕ\nЗОЛОТОЙ\nКЛЮЧИК',
     shortLabel: 'ОРЕХОВЫЙ РАФ',
   },
+  {
+    id: 7,
+    image: '/bg_image_7.jpg',
+    thumb: '/thumb_tarragon.png',
+    titleColor: '#8ce3a3',
+    accentColor: '#8ce3a3',
+    descLeft: 'Освежающий газированный лимонад на основе пряного сибирского эстрагона, спелого лесного крыжовника и сока кислого лайма.',
+    buttonLabel: 'ТАРХУН\nКРЫЖОВНИК\nЛАЙМ',
+    shortLabel: 'ТАРХУН КРЫЖОВНИК ЛАЙМ',
+  },
+  {
+    id: 8,
+    image: '/bg_image_8.jpg',
+    thumb: '/thumb_apricot.png',
+    titleColor: '#fca34d',
+    accentColor: '#fca34d',
+    descLeft: 'Сочный и густой летний нектар из спелых спелых абрикосов и тропической маракуйи с нежной кислинкой и сливочным оттенком.',
+    buttonLabel: 'АБРИКОС\nМАРАКУЙЯ',
+    shortLabel: 'АБРИКОС МАРАКУЙЯ',
+  },
+  {
+    id: 9,
+    image: '/bg_image_9.jpg',
+    thumb: '/thumb_pomegranate.png',
+    titleColor: '#e05353',
+    accentColor: '#e05353',
+    descLeft: 'Насыщенный тонизирующий лимонад из сока терпкого спелого граната и спелой лесной малины с добавлением тапиоки.',
+    buttonLabel: 'ГРАНАТ\nМАЛИНА',
+    shortLabel: 'ГРАНАТ МАЛИНА',
+  },
 ];
 
 // Helper to render grayscale PNGs as colored masks
