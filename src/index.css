@@ -33,8 +33,17 @@
   animation-name: heroFadeUp; 
   animation-duration: 1s; 
 }
+@keyframes drinkEnter {
+  0%   { opacity: 0; transform: translateY(32px) scale(0.97); }
+  100% { opacity: 1; transform: translateY(0)   scale(1); }
+}
+
+.drink-enter {
+  animation: drinkEnter 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 .hero-zoom { 
-  animation: heroZoom 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+  /* kept for compatibility — background is now static */
 }
 
 @media (prefers-reduced-motion: reduce) { 
