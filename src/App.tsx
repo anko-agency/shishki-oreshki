@@ -106,6 +106,153 @@ const slides = [
   },
 ];
 
+function renderThumbnailGraphics(slideId: number, accentColor: string, isActive: boolean) {
+  const radius = 22;
+  const strokeColor = isActive ? accentColor : 'rgba(255,255,255,0.15)';
+  const opacity = isActive ? '1' : '0.4';
+
+  switch (slideId) {
+    case 1: // Matcha (leaves layout)
+      return (
+        <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 56 56">
+          <circle cx="28" cy="28" r={radius} fill="none" stroke={strokeColor} strokeWidth="1.5" strokeDasharray="3 4" opacity={opacity} />
+          {/* 4 small leaves */}
+          {[0, 90, 180, 270].map((angle) => {
+            const rad = (angle * Math.PI) / 180;
+            const x = 28 + radius * Math.cos(rad);
+            const y = 28 + radius * Math.sin(rad);
+            return (
+              <path
+                key={angle}
+                d="M-1.5 -3 C0 -1.5, 0 1.5, -1.5 3 C1.5 1.5, 1.5 -1.5, -1.5 -3"
+                fill={isActive ? accentColor : 'rgba(255,255,255,0.4)'}
+                transform={`translate(${x}, ${y}) rotate(${angle + 45})`}
+              />
+            );
+          })}
+        </svg>
+      );
+    case 2: // Blueberry Rose (berry dots)
+      return (
+        <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 56 56">
+          <circle cx="28" cy="28" r={radius} fill="none" stroke={strokeColor} strokeWidth="1.2" strokeDasharray="14 3" opacity={opacity} />
+          {[30, 90, 150, 210, 270, 330].map((angle, idx) => {
+            const rad = (angle * Math.PI) / 180;
+            const cx = 28 + radius * Math.cos(rad);
+            const cy = 28 + radius * Math.sin(rad);
+            return (
+              <circle
+                key={angle}
+                cx={cx}
+                cy={cy}
+                r="2"
+                fill={idx % 2 === 0 ? '#9bbbe3' : '#e38da2'}
+                stroke="rgba(0,0,0,0.3)"
+                strokeWidth="0.5"
+              />
+            );
+          })}
+        </svg>
+      );
+    case 3: // Taro (pearl circles around the rim)
+      return (
+        <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 56 56">
+          <circle cx="28" cy="28" r={radius} fill="none" stroke={strokeColor} strokeWidth="1.5" opacity={opacity} />
+          {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => {
+            const rad = (angle * Math.PI) / 180;
+            const cx = 28 + radius * Math.cos(rad);
+            const cy = 28 + radius * Math.sin(rad);
+            return (
+              <circle
+                key={angle}
+                cx={cx}
+                cy={cy}
+                r="2.5"
+                fill="#2c1a3c"
+                stroke={isActive ? accentColor : 'rgba(255,255,255,0.3)'}
+                strokeWidth="0.8"
+              />
+            );
+          })}
+        </svg>
+      );
+    case 4: // Cranberry (segmented ice ticks)
+      return (
+        <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 56 56">
+          <circle cx="28" cy="28" r={radius} fill="none" stroke={strokeColor} strokeWidth="1" strokeDasharray="2 6" opacity={opacity} />
+          {[0, 60, 120, 180, 240, 300].map((angle) => {
+            const rad = (angle * Math.PI) / 180;
+            const cx = 28 + radius * Math.cos(rad);
+            const cy = 28 + radius * Math.sin(rad);
+            return (
+              <rect
+                key={angle}
+                x={cx - 1.5}
+                y={cy - 1.5}
+                width="3"
+                height="3"
+                rx="0.5"
+                fill="#fff"
+                stroke="#e38da2"
+                strokeWidth="0.5"
+                transform={`rotate(${angle} ${cx} ${cy})`}
+              />
+            );
+          })}
+        </svg>
+      );
+    case 5: // Mango (mango square chunks)
+      return (
+        <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 56 56">
+          <circle cx="28" cy="28" r={radius} fill="none" stroke={strokeColor} strokeWidth="1.5" strokeDasharray="8 4" opacity={opacity} />
+          {[15, 75, 135, 195, 255, 315].map((angle) => {
+            const rad = (angle * Math.PI) / 180;
+            const cx = 28 + radius * Math.cos(rad);
+            const cy = 28 + radius * Math.sin(rad);
+            return (
+              <rect
+                key={angle}
+                x={cx - 2}
+                y={cy - 2}
+                width="4"
+                height="4"
+                fill="#f7c374"
+                rx="0.8"
+                transform={`rotate(${angle + 12} ${cx} ${cy})`}
+              />
+            );
+          })}
+        </svg>
+      );
+    case 6: // Coffee Latte / Gold Key (coffee beans)
+      return (
+        <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 56 56">
+          <circle cx="28" cy="28" r={radius} fill="none" stroke={strokeColor} strokeWidth="1.5" opacity={opacity} />
+          {[0, 72, 144, 216, 288].map((angle) => {
+            const rad = (angle * Math.PI) / 180;
+            const cx = 28 + radius * Math.cos(rad);
+            const cy = 28 + radius * Math.sin(rad);
+            return (
+              <ellipse
+                key={angle}
+                cx={cx}
+                cy={cy}
+                rx="2.5"
+                ry="1.5"
+                fill="#553a25"
+                stroke={isActive ? accentColor : 'rgba(255,255,255,0.4)'}
+                strokeWidth="0.5"
+                transform={`rotate(${angle + 30} ${cx} ${cy})`}
+              />
+            );
+          })}
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
+
 function CircularBadge({ accent }: { accent: string }) {
   const text = 'ТОЛЬКО НАТУРАЛЬНЫЕ · ИНГРЕДИЕНТЫ · ';
   const radius = 42;
@@ -309,25 +456,46 @@ export default function App() {
               </div>
             </div>
 
-            {/* Thumbnails */}
-            <div className="flex items-center gap-3 sm:gap-5 overflow-x-auto no-scrollbar mx-3 px-1 py-0.5 select-none">
+            {/* Thumbnails with custom SVG infographics and labels on the right */}
+            <div className="flex items-center gap-4 sm:gap-6 overflow-x-auto no-scrollbar mx-3 px-1 py-1 select-none">
               {slides.map((slide, idx) => {
                 const isActive = idx === activeSlideIndex;
                 return (
-                  <div key={slide.id} onClick={() => setActiveSlideIndex(idx)}
-                    className="flex flex-col items-center gap-1.5 cursor-pointer flex-shrink-0">
-                    <div className="w-12 h-12 sm:w-[52px] sm:h-[52px] rounded-full p-1 flex items-center justify-center transition-all duration-300"
+                  <div
+                    key={slide.id}
+                    onClick={() => setActiveSlideIndex(idx)}
+                    className="flex items-center gap-2.5 cursor-pointer flex-shrink-0 group transition-all"
+                  >
+                    {/* Circle wrapper with custom SVG border */}
+                    <div
+                      className="w-12 h-12 sm:w-[50px] sm:h-[50px] relative flex items-center justify-center transition-all duration-300"
                       style={{
-                        border: `2px solid ${isActive ? slide.accentColor : 'rgba(255,255,255,0.1)'}`,
-                        background: isActive ? `${slide.accentColor}18` : 'rgba(255,255,255,0.04)',
-                        transform: isActive ? 'scale(1.1)' : 'scale(1)',
-                        boxShadow: isActive ? `0 0 14px ${slide.accentColor}55` : 'none',
-                        opacity: isActive ? 1 : 0.45,
-                      }}>
-                      <img src={slide.thumb} className="w-full h-full object-contain" alt={slide.shortLabel} />
+                        transform: isActive ? 'scale(1.08)' : 'scale(1)',
+                        opacity: isActive ? 1 : 0.5,
+                      }}
+                    >
+                      {/* Detailed custom SVG infographics */}
+                      {renderThumbnailGraphics(slide.id, slide.accentColor, isActive)}
+
+                      {/* Inner drink image */}
+                      <div
+                        className="w-[32px] h-[32px] sm:w-[36px] sm:h-[36px] rounded-full overflow-hidden flex items-center justify-center bg-white/5 backdrop-blur-sm z-10"
+                        style={{
+                          boxShadow: isActive ? `0 0 10px ${slide.accentColor}33` : 'none',
+                        }}
+                      >
+                        <img src={slide.thumb} className="w-[85%] h-[85%] object-contain" alt={slide.shortLabel} />
+                      </div>
                     </div>
-                    <span className="text-[8px] font-bold uppercase tracking-tight text-center leading-tight whitespace-pre-line"
-                      style={{ color: isActive ? slide.accentColor : 'rgba(255,255,255,0.3)', maxWidth:'60px' }}>
+
+                    {/* Label placed on the right side of the circle */}
+                    <span
+                      className="text-[8px] sm:text-[9px] font-black uppercase tracking-wider text-left leading-[1.2] whitespace-pre-line transition-colors"
+                      style={{
+                        color: isActive ? slide.accentColor : 'rgba(255,255,255,0.4)',
+                        maxWidth: '90px',
+                      }}
+                    >
                       {slide.buttonLabel}
                     </span>
                   </div>
