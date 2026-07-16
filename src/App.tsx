@@ -269,7 +269,7 @@ export default function App() {
           <div className="flex flex-col md:flex-row items-center justify-start md:gap-8 px-8 md:px-16 max-w-[1600px] mx-auto w-full">
 
             {/* Left Season Title block */}
-            <div className="flex flex-col items-center md:items-start relative z-10 mb-2 md:mb-0">
+            <div className="flex flex-col items-center md:items-start relative z-10 mb-2 md:mb-0 md:ml-36">
               <span className="font-[Bebas_Neue] text-white/80 text-[48px] md:text-[54px] leading-[0.8] tracking-widest drop-shadow-md">ЛЕТО</span>
               <div className="flex items-center gap-1 relative mt-1">
                 <span className="font-caveat text-[42px] md:text-[46px] leading-[0.8] font-bold drop-shadow-md" style={{ color: currentSlide.accentColor, transition: 'color 0.7s ease' }}>2026</span>
