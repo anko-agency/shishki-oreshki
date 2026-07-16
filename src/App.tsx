@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, ArrowRight, Play, Grid } from 'lucide-react';
+import { Menu, X, ArrowRight, Play } from 'lucide-react';
 import { MenuBar } from './components/ui/glow-menu';
 
 const slides = [
@@ -269,7 +269,7 @@ export default function App() {
           <div className="flex flex-col md:flex-row items-center justify-start md:gap-8 px-8 md:px-16 max-w-[1600px] mx-auto w-full">
 
             {/* Left Season Title block */}
-            <div className="flex flex-col items-center md:items-start relative z-10 mb-2 md:mb-0 md:ml-40">
+            <div className="flex flex-col items-center md:items-start relative z-10 mb-2 md:mb-0">
               <span className="font-[Bebas_Neue] text-white/80 text-[48px] md:text-[54px] leading-[0.8] tracking-widest drop-shadow-md">ЛЕТО</span>
               <div className="flex items-center gap-1 relative mt-1">
                 <span className="font-caveat text-[42px] md:text-[46px] leading-[0.8] font-bold drop-shadow-md" style={{ color: currentSlide.accentColor, transition: 'color 0.7s ease' }}>2026</span>
@@ -281,7 +281,7 @@ export default function App() {
             </div>
 
             {/* Thumbnails - Glow Menu Integration */}
-            <div className="flex-1 ml-0 md:ml-12 w-full max-w-full md:max-w-[70%]">
+            <div className="w-fit max-w-full md:max-w-[70%] z-10">
               <MenuBar 
                 items={slides.map(slide => ({
                   icon: (props: any) => <img src={slide.thumb} alt={slide.shortLabel} {...props} className="h-6 w-6 object-contain" />,
@@ -300,10 +300,7 @@ export default function App() {
               />
             </div>
 
-            {/* Grid button */}
-            <button className="hidden md:flex w-12 h-12 rounded-full border border-white/30 text-white/80 hover:text-white hover:border-white/80 items-center justify-center flex-shrink-0 transition-all bg-black/20 backdrop-blur-md relative z-10" aria-label="Все напитки">
-              <Grid size={18} strokeWidth={2.5} />
-            </button>
+            {/* Grid button removed */}
 
           </div>
         </div>
