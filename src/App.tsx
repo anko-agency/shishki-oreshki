@@ -20,7 +20,7 @@ const slides = [
     titleColor: '#9bbbe3',
     accentColor: '#9bbbe3',
     descLeft: 'Нежное сочетание спелой лесной черники с утонченным ароматом дамасской розы, сливочной основы и мягких жемчужин черной тапиоки.',
-    buttonLabel: 'БАБЛ\nЧЕРНИКА\nРОЗА',
+    buttonLabel: 'БАБЛ ЧЕРНИКА\nРОЗА',
     shortLabel: 'БАБЛ ЧЕРНИКА РОЗА',
   },
   {
@@ -62,36 +62,6 @@ const slides = [
     descLeft: 'Насыщенный сливочный кофе с добавлением обжаренного лесного ореха, нежных сливок и сладкого карамельного сиропа.',
     buttonLabel: 'АЙС ЛАТТЕ\nЗОЛОТОЙ\nКЛЮЧИК',
     shortLabel: 'ОРЕХОВЫЙ РАФ',
-  },
-  {
-    id: 7,
-    image: '/bg_image_7.jpg',
-    thumb: '/thumb_tarragon.png',
-    titleColor: '#3cd070',
-    accentColor: '#3cd070',
-    descLeft: 'Освежающий таёжный лимонад на основе пряного эстрагона, спелого кисло-сладкого крыжовника и сочного лайма.',
-    buttonLabel: 'ТАРХУН\nКРЫЖОВНИК\nЛАЙМ',
-    shortLabel: 'ТАРХУН КРЫЖОВНИК ЛАЙМ',
-  },
-  {
-    id: 8,
-    image: '/bg_image_8.jpg',
-    thumb: '/thumb_apricot.png',
-    titleColor: '#fba834',
-    accentColor: '#fba834',
-    descLeft: 'Густой тропический коктейль из спелого абрикоса и экзотической маракуйи с приятной кислинкой и насыщенным ароматом.',
-    buttonLabel: 'АБРИКОС\nМАРАКУЙЯ',
-    shortLabel: 'АБРИКОС МАРАКУЙЯ',
-  },
-  {
-    id: 9,
-    image: '/bg_image_9.jpg',
-    thumb: '/thumb_pomegranate.png',
-    titleColor: '#e5383b',
-    accentColor: '#e5383b',
-    descLeft: 'Бодрящий летний напиток, сочетающий терпкий сок спелого граната с нежной сладостью лесной малины.',
-    buttonLabel: 'ГРАНАТ\nМАЛИНА',
-    shortLabel: 'ГРАНАТ МАЛИНА',
   },
 ];
 
@@ -209,7 +179,7 @@ export default function App() {
           <div key={`panel-${activeSlideIndex}`} className="pointer-events-auto flex flex-col items-start mt-[-10vh]">
 
             {/* Creative Torn Tape Label */}
-            <div className="inline-block relative font-extrabold text-[12px] sm:text-[13px] uppercase px-6 py-3 transform -rotate-3 mb-3 ml-4 z-10">
+            <div className="inline-block relative font-extrabold text-[12px] sm:text-[13px] uppercase px-6 py-3 transform -rotate-3 mb-10 ml-4 z-10">
               <div 
                 className="absolute inset-0 z-[-1] drop-shadow-md" 
                 style={{ 
@@ -260,21 +230,32 @@ export default function App() {
           </div>
         </div>
 
-        {/* Paper Tag "100% натуральные ингредиенты" */}
+        {/* Paper Tag "100% натуральные ингредиенты" with Rotating Halal Badge */}
         <div className="absolute z-[60] right-[8%] top-[30%] hidden lg:flex flex-col items-center justify-center transform rotate-6 drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]" 
              style={{ width: '220px', height: '180px' }}>
           {/* Craft Paper Background Mask */}
           <SvgMask src="/assets_v4/img_27.png" className="absolute inset-0 w-full h-full opacity-100" color="#e4d0b8" />
           
-          <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 -mt-2">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4a3621" strokeWidth="2" className="mb-2 opacity-90">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-              <path d="M12 6v6l4 2"/>
+          <div className="relative z-10 flex flex-col items-center justify-center text-center -mt-2">
+            <svg width="130" height="130" viewBox="0 0 24 24" fill="none" className="select-none">
+              <defs>
+                <path id="circlePath" d="M 12, 12 m -8.2, 0 a 8.2,8.2 0 1,1 16.4,0 a 8.2,8.2 0 1,1 -16.4,0" />
+              </defs>
+              
+              {/* Halal center icon circle */}
+              <circle cx="12" cy="12" r="6" stroke="#4a3621" strokeWidth="1.2" fill="#4a3621" fillOpacity="0.05" />
+              <text x="12" y="11.5" fontSize="3.8" fontWeight="bold" fontFamily="sans-serif" textAnchor="middle" fill="#4a3621">حلال</text>
+              <text x="12" y="15" fontSize="1.8" fontWeight="900" fontFamily="sans-serif" textAnchor="middle" fill="#4a3621" letterSpacing="0.3">HALAL</text>
+
+              {/* Rotating circular text */}
+              <g style={{ animation: 'spin 15s linear infinite', transformOrigin: '12px 12px' }}>
+                <text fill="#4a3621" fontSize="1.2" fontWeight="bold" fontFamily="sans-serif" letterSpacing="0.18">
+                  <textPath href="#circlePath" startOffset="0%">
+                    НАТУРАЛЬНЫЕ ИНГРЕДИЕНТЫ • 100% • 
+                  </textPath>
+                </text>
+              </g>
             </svg>
-            {/* Real text using Caveat instead of img_22.png so it looks crisp */}
-            <span className="font-caveat text-[#4a3621] text-[32px] font-bold leading-[0.9] transform -rotate-2">
-              100%<br/>натуральные<br/>ингредиенты
-            </span>
           </div>
         </div>
 
