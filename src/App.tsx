@@ -266,7 +266,7 @@ export default function App() {
 
         {/* BOTTOM BAR - Borderless, open layout */}
         <div className="absolute bottom-8 left-0 right-0 z-[100]">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 px-8 md:px-16 max-w-[1600px] mx-auto w-full">
+          <div className="flex flex-col md:flex-row items-center justify-start md:gap-16 px-8 md:px-16 max-w-[1600px] mx-auto w-full">
 
             {/* Left Season Title block */}
             <div className="flex flex-col items-center md:items-start relative z-10 mb-2 md:mb-0">

@@ -69,7 +69,7 @@ export const MenuBar = React.forwardRef<HTMLElement, MenuBarProps>(
       <motion.nav
         ref={ref}
         className={cn(
-          "p-2 rounded-2xl bg-gradient-to-b from-background/80 to-background/40 backdrop-blur-lg border border-border/40 shadow-lg relative overflow-hidden",
+          "p-2 rounded-full bg-gradient-to-b from-background/80 to-background/40 backdrop-blur-lg border border-border/40 shadow-lg relative overflow-hidden",
           className,
         )}
         initial="initial"
@@ -81,7 +81,7 @@ export const MenuBar = React.forwardRef<HTMLElement, MenuBarProps>(
             isDarkTheme
               ? "via-blue-400/30 via-30% via-purple-400/30 via-60% via-red-400/30 via-90%"
               : "via-blue-400/20 via-30% via-purple-400/20 via-60% via-red-400/20 via-90%"
-          } to-transparent rounded-3xl z-0 pointer-events-none`}
+          } to-transparent rounded-full z-0 pointer-events-none`}
           variants={navGlowVariants}
         />
         <ul className="flex items-center gap-2 relative z-10 w-full overflow-x-auto no-scrollbar py-2 px-1">
@@ -96,7 +96,7 @@ export const MenuBar = React.forwardRef<HTMLElement, MenuBarProps>(
                   className="block w-full"
                 >
                   <motion.div
-                    className="block rounded-xl overflow-visible group relative"
+                    className="block rounded-full overflow-visible group relative"
                     style={{ perspective: "600px" }}
                     whileHover="hover"
                     initial={isActive ? "hover" : "initial"}
@@ -109,12 +109,12 @@ export const MenuBar = React.forwardRef<HTMLElement, MenuBarProps>(
                       style={{
                         background: item.gradient,
                         opacity: isActive ? 1 : 0,
-                        borderRadius: "16px",
+                        borderRadius: "9999px",
                       }}
                     />
                     <motion.div
                       className={cn(
-                        "flex items-center gap-2 px-4 py-2 relative z-10 bg-transparent transition-colors rounded-xl whitespace-nowrap",
+                        "flex items-center gap-2 px-4 py-2 relative z-10 bg-transparent transition-colors rounded-full whitespace-nowrap",
                         isActive
                           ? ""
                           : "text-white/60 group-hover:text-white/90",
@@ -139,7 +139,7 @@ export const MenuBar = React.forwardRef<HTMLElement, MenuBarProps>(
                     </motion.div>
                     <motion.div
                       className={cn(
-                        "flex items-center gap-2 px-4 py-2 absolute inset-0 z-10 bg-transparent transition-colors rounded-xl whitespace-nowrap",
+                        "flex items-center gap-2 px-4 py-2 absolute inset-0 z-10 bg-transparent transition-colors rounded-full whitespace-nowrap",
                         isActive
                           ? "font-black"
                           : "text-white/60 group-hover:text-white",
