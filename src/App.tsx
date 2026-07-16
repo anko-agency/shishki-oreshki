@@ -308,12 +308,11 @@ export default function App() {
 
       {/* NAV */}
       <nav className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 sm:px-10 py-4 sm:py-5 bg-gradient-to-b from-black/65 to-transparent">
-        <div className="flex items-center gap-3">
-          <img src="/logo_pinecone.png" className="w-8 h-10 object-contain brightness-0 invert" alt="Шишки & Орешки" />
-          <div className="flex flex-col text-white leading-[1.0] font-black uppercase text-[14px] tracking-wider">
-            <span>Шишки</span>
-            <span>Орешки</span>
-          </div>
+        {/* Horizontal Logo matching the reference image */}
+        <div className="flex items-center gap-2 select-none">
+          <span className="text-white font-black uppercase text-[12px] sm:text-[15px] tracking-[0.2em]">ШИШКИ</span>
+          <img src="/logo_pinecone.png" className="w-[18px] h-[22px] sm:w-[22px] sm:h-[26px] object-contain brightness-0 invert mx-0.5" alt="Шишки & Орешки" />
+          <span className="text-white font-black uppercase text-[12px] sm:text-[15px] tracking-[0.2em]">ОРЕШКИ</span>
         </div>
 
         <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 gap-7 items-center">
