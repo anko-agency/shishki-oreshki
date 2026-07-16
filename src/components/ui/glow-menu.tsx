@@ -77,10 +77,14 @@ export const MenuBar = React.forwardRef<HTMLElement, MenuBarProps>(
         onMouseMove={(e) => {
           const rect = e.currentTarget.getBoundingClientRect()
           const x = e.clientX - rect.left
-          // Trigger slide only when hovering the right 30% of the menu
-          setIsHoveredRight(x > rect.width * 0.70)
+          // Slide left (translate) when hovering the right 30%
+          if (x > rect.width * 0.70) {
+            setIsHoveredRight(true)
+          // Slide back to start only when hovering the left 30%
+          } else if (x < rect.width * 0.30) {
+            setIsHoveredRight(false)
+          }
         }}
-        onMouseLeave={() => setIsHoveredRight(false)}
         {...props}
       >
         <motion.div
