@@ -64,6 +64,23 @@ const slides = [
   },
 ];
 
+// Helper to render grayscale PNGs as colored masks
+const SvgMask = ({ src, className, color, style = {} }: any) => (
+  <div 
+    className={className} 
+    style={{ 
+      backgroundColor: color || 'currentColor',
+      WebkitMaskImage: `url(${src})`, 
+      WebkitMaskSize: '100% 100%', 
+      WebkitMaskRepeat: 'no-repeat',
+      maskImage: `url(${src})`, 
+      maskSize: '100% 100%', 
+      maskRepeat: 'no-repeat',
+      ...style 
+    }} 
+  />
+);
+
 export default function App() {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -87,35 +104,33 @@ export default function App() {
       <div className="absolute inset-0 pointer-events-none z-15 overflow-hidden">
         
         {/* Left margin torn paper */}
-        <div className="absolute left-0 top-0 bottom-0 w-[16vw] max-w-[240px] z-[55]">
-          <img src="/assets_v4/img_2.png" alt="torn edge" className="w-full h-full object-cover object-right mix-blend-normal opacity-100 drop-shadow-[5px_0_15px_rgba(0,0,0,0.8)]" />
+        <div className="absolute left-0 top-0 bottom-0 w-[14vw] max-w-[200px] z-[55] drop-shadow-[10px_0_20px_rgba(0,0,0,0.9)]">
+          <SvgMask src="/assets_v4/img_2.png" className="w-full h-full object-cover object-right" color="#111210" />
           
           {/* Pinecone drawing on the dark paper */}
-          <img src="/assets_v4/img_4.png" alt="pinecone" className="absolute left-[3vw] bottom-[15%] w-32 h-auto opacity-70 transform -rotate-12 mix-blend-screen" />
-          <img src="/assets_v4/img_4.png" alt="pinecone" className="absolute left-[2vw] top-[30%] w-20 h-auto opacity-40 transform rotate-45 mix-blend-screen" />
+          <SvgMask src="/assets_v4/img_4.png" className="absolute left-[3vw] bottom-[15%] w-32 h-40 opacity-70 transform -rotate-12" color="#fff" />
+          <SvgMask src="/assets_v4/img_4.png" className="absolute left-[2vw] top-[30%] w-20 h-28 opacity-40 transform rotate-45" color="#fff" />
         </div>
 
         {/* Scattered nuts and leaves in the background */}
-        <img src="/assets_v4/img_3.png" alt="nuts cluster" className="absolute left-[38%] top-[18%] w-24 h-auto opacity-80 mix-blend-screen transform rotate-12" />
-        <img src="/assets_v4/img_18.png" alt="scattered nuts" className="absolute right-[30%] bottom-[25%] w-40 h-auto opacity-60 mix-blend-screen" />
+        <SvgMask src="/assets_v4/img_3.png" className="absolute left-[38%] top-[18%] w-24 h-24 opacity-80 transform rotate-12" color="#fff" />
+        <SvgMask src="/assets_v4/img_18.png" className="absolute right-[25%] bottom-[25%] w-48 h-56 opacity-40" color="#fff" />
         
         {/* White brush swooshes */}
-        <img src="/assets_v4/img_12.png" alt="brush swoosh" className="absolute left-[48%] top-[10%] w-40 h-auto opacity-90 mix-blend-screen transform -rotate-12" />
-        <img src="/assets_v4/img_12.png" alt="brush swoosh" className="absolute left-[22%] bottom-[32%] w-48 h-auto opacity-50 mix-blend-screen transform rotate-[160deg]" />
+        <SvgMask src="/assets_v4/img_12.png" className="absolute left-[45%] top-[12%] w-48 h-12 opacity-80 transform -rotate-12" color="#fff" />
+        <SvgMask src="/assets_v4/img_12.png" className="absolute left-[22%] bottom-[32%] w-56 h-12 opacity-40 transform rotate-[160deg]" color="#fff" />
 
       </div>
 
       {/* NAV */}
       <nav className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-8 sm:px-12 py-6 bg-gradient-to-b from-black/80 via-black/40 to-transparent">
-        <div className="flex items-center select-none ml-4 relative z-50 gap-3">
+        <div className="flex items-center select-none ml-4 relative z-50 gap-2">
           {/* Logo Pinecone Icon */}
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.5" className="drop-shadow-md">
-             <path d="M12 2L16 6C16 6 18 8 18 12C18 16 12 22 12 22C12 22 6 16 6 12C6 8 8 6 8 6L12 2Z" />
-             <path d="M12 2L12 22" />
-             <path d="M8 10L16 10" />
-             <path d="M7 14L17 14" />
-          </svg>
-          <img src="/logo_horizontal.png" className="h-[28px] sm:h-[32px] w-auto object-contain filter drop-shadow-md" alt="Шишки & Орешки" />
+          <img src="/logo_pinecone.png" className="h-[36px] w-auto object-contain filter drop-shadow-md brightness-0 invert" alt="Icon" />
+          <div className="flex flex-col -gap-1 ml-1 leading-[0.95] font-black tracking-widest text-[16px] drop-shadow-md">
+            <span>ШИШКИ</span>
+            <span>ОРЕШКИ</span>
+          </div>
         </div>
 
         <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 gap-10 items-center mt-1 z-50">
@@ -157,26 +172,27 @@ export default function App() {
           <div key={`panel-${activeSlideIndex}`} className="pointer-events-auto flex flex-col items-start mt-[-10vh]">
 
             {/* Creative Torn Tape Label */}
-            <div className="inline-block relative text-black font-extrabold text-[12px] sm:text-[13px] uppercase px-6 py-3 transform -rotate-3 mb-10 ml-4">
-              <img src="/assets_v4/img_11.png" alt="tape background" className="absolute inset-0 w-full h-full object-cover -z-10 opacity-90 drop-shadow-md" style={{ filter: 'hue-rotate(345deg) saturate(1.5)' }} />
+            <div className="inline-block relative text-black font-extrabold text-[12px] sm:text-[13px] uppercase px-6 py-2.5 transform -rotate-3 mb-10 ml-4">
+              <SvgMask src="/assets_v4/img_11.png" className="absolute inset-0 w-full h-[120%] -top-[10%] -z-10 drop-shadow-md" color="#f4a123" />
               Новое летнее меню
             </div>
 
             {/* Giant Distressed Title using Bebas Neue & Caveat */}
             <h1 className="flex flex-col items-start leading-[0.75] mb-12 relative w-full drop-shadow-2xl">
-              <span className="block font-[Bebas_Neue] text-white tracking-widest" style={{ fontSize:'clamp(7rem, 20vw, 16rem)', textShadow:'0 10px 40px rgba(0,0,0,0.8)' }}>
+              {/* Add textured overlay to ЛЕТО using a mask or CSS filter if needed, but plain font works great */}
+              <span className="block font-[Bebas_Neue] text-white tracking-widest relative" style={{ fontSize:'clamp(7rem, 20vw, 16rem)', textShadow:'0 10px 40px rgba(0,0,0,0.8)' }}>
                 ЛЕТО
+                <SvgMask src="/assets_v4/img_12.png" className="absolute right-[-10%] top-[40%] w-32 h-8 opacity-40 mix-blend-overlay" color="#fff" />
               </span>
               
               {/* 2026 Brush Accent overlapping */}
               <span className="absolute left-[38%] top-[35%] font-caveat text-[#f4a123] transform rotate-[-8deg] drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)] z-10" style={{ fontSize: 'clamp(6rem, 15vw, 12rem)', fontWeight: 700 }}>
                 2026
-                {/* Brush stroke underline */}
-                <svg className="absolute -bottom-6 left-[-15%] w-[140%] h-12 text-white opacity-95" viewBox="0 0 100 20" preserveAspectRatio="none">
-                  <path d="M0,10 Q30,20 60,10 T100,5" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
-                </svg>
+                {/* Brush stroke underline from SVG instead of CSS */}
+                <SvgMask src="/assets_v4/img_12.png" className="absolute -bottom-10 left-[-15%] w-[130%] h-12 opacity-95 transform -rotate-3" color="#fff" />
+                
                 {/* Drawn pinecone next to 2026 */}
-                <img src="/assets_v4/img_4.png" alt="pinecone" className="absolute -right-[35%] top-1/2 -translate-y-1/2 w-24 h-auto opacity-90 mix-blend-screen transform rotate-12" />
+                <SvgMask src="/assets_v4/img_4.png" className="absolute -right-[35%] top-1/2 -translate-y-1/2 w-24 h-32 opacity-90 transform rotate-12" color="#fff" />
               </span>
             </h1>
 
@@ -211,16 +227,17 @@ export default function App() {
         </div>
 
         {/* Paper Tag "100% натуральные ингредиенты" */}
-        <div className="absolute z-[60] right-[8%] top-[30%] hidden lg:flex flex-col items-center justify-center transform rotate-6 drop-shadow-2xl" 
-             style={{ width: '240px', height: '200px' }}>
-          {/* Craft Paper Background Image from SVG */}
-          <img src="/assets_v4/img_27.png" alt="craft paper" className="absolute inset-0 w-full h-full object-fill drop-shadow-[0_10px_25px_rgba(0,0,0,0.5)] opacity-100" />
+        <div className="absolute z-[60] right-[8%] top-[30%] hidden lg:flex flex-col items-center justify-center transform rotate-6 drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]" 
+             style={{ width: '220px', height: '180px' }}>
+          {/* Craft Paper Background Mask */}
+          <SvgMask src="/assets_v4/img_27.png" className="absolute inset-0 w-full h-full opacity-100" color="#e4d0b8" />
           
           <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 -mt-2">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4a3621" strokeWidth="2" className="mb-2 opacity-90">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
               <path d="M12 6v6l4 2"/>
             </svg>
+            {/* Real text using Caveat instead of img_22.png so it looks crisp */}
             <span className="font-caveat text-[#4a3621] text-[32px] font-bold leading-[0.9] transform -rotate-2">
               100%<br/>натуральные<br/>ингредиенты
             </span>
@@ -272,7 +289,7 @@ export default function App() {
                     {/* Active Background Paint Stroke (Tape) */}
                     {isActive && (
                       <div className="absolute inset-0 z-0 opacity-100 flex items-center justify-center">
-                        <img src="/assets_v4/img_11.png" alt="active background" className="absolute w-[130%] h-[150%] max-w-none object-fill opacity-95 drop-shadow-md" style={{ filter: 'hue-rotate(345deg) saturate(1.5)' }} />
+                        <SvgMask src="/assets_v4/img_11.png" className="absolute w-[150%] h-[160%] max-w-none opacity-95 drop-shadow-md" color="#f4a123" />
                       </div>
                     )}
 
