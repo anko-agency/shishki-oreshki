@@ -265,14 +265,14 @@ export default function App() {
                 <path id="circlePath" d="M 12, 12 m -8.2, 0 a 8.2,8.2 0 1,1 16.4,0 a 8.2,8.2 0 1,1 -16.4,0" />
               </defs>
               
-              {/* Halal center icon circle - strokeWidth="0.6" (thin) */}
-              <circle cx="12" cy="12" r="6" stroke="#ffffff" strokeWidth="0.6" fill="#ffffff" fillOpacity="0.08" />
+              {/* Halal center icon circle - strokeWidth="0.4" (extra thin) */}
+              <circle cx="12" cy="12" r="6" stroke="#ffffff" strokeWidth="0.4" fill="#ffffff" fillOpacity="0.08" />
               <text x="12" y="11.5" fontSize="4.2" fontWeight="bold" fontFamily="sans-serif" textAnchor="middle" fill="#ffffff">حلال</text>
               <text x="12" y="15" fontSize="2.0" fontWeight="900" fontFamily="sans-serif" textAnchor="middle" fill="#ffffff" letterSpacing="0.3">HALAL</text>
 
               {/* Rotating circular text */}
               <g className="rotating-text">
-                <text fill="#ffffff" fontSize="1.2" fontWeight="bold" fontFamily="sans-serif" letterSpacing="0.18">
+                <text fill="#ffffff" fontSize="1.5" fontWeight="bold" fontFamily="sans-serif" letterSpacing="0.18">
                   <textPath href="#circlePath" startOffset="0%">
                     НАТУРАЛЬНЫЕ ИНГРЕДИЕНТЫ • 100% • 
                   </textPath>
