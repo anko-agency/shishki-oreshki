@@ -191,7 +191,7 @@ export default function App() {
 
         <div className="relative z-[60] w-full h-full flex flex-col justify-center px-8 sm:px-12 md:pl-48 md:pr-6 pt-20 pb-40 md:pt-24 pointer-events-none">
           
-          <div key={`panel-${activeSlideIndex}`} className="pointer-events-auto flex flex-col items-start mt-[-10vh]">
+          <div key={`panel-${activeSlideIndex}`} className="pointer-events-auto flex flex-col items-start mt-[-10vh] translate-y-[30px]">
 
             {/* Creative Torn Tape Label */}
             <div className="inline-block relative font-extrabold text-[12px] sm:text-[13px] uppercase px-6 py-3 transform -rotate-3 mb-10 ml-4 z-10">
