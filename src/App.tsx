@@ -319,15 +319,15 @@ export default function App() {
               <MenuBar 
                 items={slides.map(slide => ({
                   icon: (props: any) => <img src={slide.thumb} alt={slide.shortLabel} {...props} className="h-6 w-6 object-contain" />,
-                  label: slide.buttonLabel,
+                  label: slide.shortLabel,
                   href: '#',
                   gradient: `radial-gradient(circle, ${slide.accentColor}33 0%, ${slide.accentColor}11 50%, transparent 100%)`,
                   iconColor: "",
                   color: slide.accentColor
                 }))}
-                activeItem={currentSlide.buttonLabel}
+                activeItem={currentSlide.shortLabel}
                 onItemClick={(label) => {
-                  const idx = slides.findIndex(s => s.buttonLabel === label);
+                  const idx = slides.findIndex(s => s.shortLabel === label);
                   if (idx !== -1) setActiveSlideIndex(idx);
                 }}
                 className="w-full bg-black/40 border-white/10"
