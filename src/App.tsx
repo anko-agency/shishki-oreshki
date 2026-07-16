@@ -179,23 +179,13 @@ export default function App() {
               Новое летнее меню
             </div>
 
-            {/* Giant Distressed Title using Bebas Neue & Caveat */}
-            <h1 className="flex flex-col items-start leading-[0.75] mb-12 relative w-full drop-shadow-2xl">
-              {/* Add textured overlay to ЛЕТО using a mask or CSS filter if needed, but plain font works great */}
-              <span className="block font-[Bebas_Neue] text-white tracking-widest relative" style={{ fontSize:'clamp(7rem, 20vw, 16rem)', textShadow:'0 10px 40px rgba(0,0,0,0.8)' }}>
-                ЛЕТО
-                <img src="/assets_v4/img_12.png" className="absolute right-[-10%] top-[40%] w-32 h-auto opacity-40 mix-blend-overlay" alt="texture" />
-              </span>
-              
-              {/* 2026 Brush Accent overlapping */}
-              <span className="absolute left-[38%] top-[35%] font-caveat text-[#f4a123] transform rotate-[-8deg] drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)] z-10" style={{ fontSize: 'clamp(6rem, 15vw, 12rem)', fontWeight: 700 }}>
-                2026
-                {/* Brush stroke underline from SVG instead of CSS */}
-                <img src="/assets_v4/img_12.png" className="absolute -bottom-10 left-[-15%] w-[130%] h-auto opacity-95 transform -rotate-3" alt="brush stroke" />
-                
-                {/* Drawn pinecone next to 2026 */}
-                <img src="/assets_v4/img_4.png" className="absolute -right-[35%] top-1/2 -translate-y-1/2 w-24 h-auto opacity-90 transform rotate-12" alt="pinecone" />
-              </span>
+            {/* Dynamic Drink Title */}
+            <h1 className="flex flex-col items-start leading-[1] mb-8 relative w-full drop-shadow-2xl uppercase font-black tracking-tight" style={{ fontSize: 'clamp(4rem, 8vw, 6.5rem)' }}>
+              {currentSlide.buttonLabel.split('\n').map((line, idx) => (
+                <span key={idx} className={idx === 1 ? "text-[#f4a123]" : "text-white"} style={{ textShadow:'0 10px 30px rgba(0,0,0,0.7)' }}>
+                  {line}
+                </span>
+              ))}
             </h1>
 
             {/* Description */}
