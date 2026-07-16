@@ -20,7 +20,7 @@ const slides = [
     titleColor: '#9bbbe3',
     accentColor: '#9bbbe3',
     descLeft: 'Нежное сочетание спелой лесной черники с утонченным ароматом дамасской розы, сливочной основы и мягких жемчужин черной тапиоки.',
-    buttonLabel: 'БАБЛ ЧЕРНИКА\nРОЗА',
+    buttonLabel: 'БАБЛ\nЧЕРНИКА РОЗА',
     shortLabel: 'БАБЛ ЧЕРНИКА РОЗА',
   },
   {
@@ -179,7 +179,7 @@ export default function App() {
           <div key={`panel-${activeSlideIndex}`} className="pointer-events-auto flex flex-col items-start mt-[-10vh]">
 
             {/* Creative Torn Tape Label */}
-            <div className="inline-block relative font-extrabold text-[12px] sm:text-[13px] uppercase px-6 py-3 transform -rotate-3 mb-10 ml-4 z-10">
+            <div className="inline-block relative font-extrabold text-[12px] sm:text-[13px] uppercase px-6 py-3 transform -rotate-3 mb-3 ml-4 z-10">
               <div 
                 className="absolute inset-0 z-[-1] drop-shadow-md" 
                 style={{ 
