@@ -332,7 +332,7 @@ export default function App() {
         </div>
 
         <div className="flex items-center gap-3">
-          <button className="hidden md:flex border border-white/25 hover:border-white/60 text-white text-[11px] font-extrabold uppercase tracking-widest px-5 py-2.5 rounded items-center gap-2 transition-all hover:bg-white/8">
+          <button className="hidden md:flex bg-white hover:bg-white/90 text-neutral-950 text-[11px] font-extrabold uppercase tracking-widest px-6 py-2.5 rounded-full items-center gap-2 transition-all shadow-md">
             <span>Заказать столик</span>
             <ArrowRight size={12} />
           </button>
@@ -354,7 +354,7 @@ export default function App() {
             </button>
           ))}
         </div>
-        <button onClick={() => setIsMobileMenuOpen(false)} className="border border-white/30 text-white font-bold px-8 py-3 rounded text-sm tracking-wider uppercase">Заказать столик</button>
+        <button onClick={() => setIsMobileMenuOpen(false)} className="bg-white hover:bg-white/90 text-neutral-950 font-bold px-8 py-3 rounded-full text-sm tracking-wider uppercase transition-all shadow-md">Заказать столик</button>
       </div>
 
       {/* HERO */}
@@ -397,7 +397,7 @@ export default function App() {
 
             {/* Buttons */}
             <div className="flex flex-wrap items-center gap-5 hero-anim hero-fade" style={{ animationDelay:'0.64s' }}>
-              <button className="text-neutral-950 text-[11px] font-black uppercase tracking-wider px-7 py-3.5 rounded flex items-center gap-2 transition-all hover:opacity-85 active:scale-95"
+              <button className="text-neutral-950 text-[11px] font-black uppercase tracking-wider px-8 py-3.5 rounded-full flex items-center gap-2 transition-all hover:opacity-85 active:scale-95 shadow-md"
                 style={{ background: currentSlide.accentColor }}>
                 <span>Попробовать</span>
                 <ArrowRight size={13} />
