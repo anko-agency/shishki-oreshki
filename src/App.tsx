@@ -124,13 +124,15 @@ export default function App() {
 
       {/* NAV */}
       <nav className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-8 sm:px-12 py-6 bg-gradient-to-b from-black/80 via-black/40 to-transparent">
-        <div className="flex items-center select-none ml-4 relative z-50 gap-2">
+        <div className="flex items-center select-none ml-4 relative z-50 gap-3">
           {/* Logo Pinecone Icon */}
-          <img src="/logo_pinecone.png" className="h-[36px] w-auto object-contain filter drop-shadow-md brightness-0 invert" alt="Icon" />
-          <div className="flex flex-col -gap-1 ml-1 leading-[0.95] font-black tracking-widest text-[16px] drop-shadow-md">
-            <span>ШИШКИ</span>
-            <span>ОРЕШКИ</span>
-          </div>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.5" className="drop-shadow-md">
+             <path d="M12 2L16 6C16 6 18 8 18 12C18 16 12 22 12 22C12 22 6 16 6 12C6 8 8 6 8 6L12 2Z" />
+             <path d="M12 2L12 22" />
+             <path d="M8 10L16 10" />
+             <path d="M7 14L17 14" />
+          </svg>
+          <img src="/logo_horizontal.png" className="h-[28px] sm:h-[32px] w-auto object-contain filter drop-shadow-md" alt="Шишки & Орешки" />
         </div>
 
         <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 gap-10 items-center mt-1 z-50">
