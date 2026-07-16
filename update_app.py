@@ -1,4 +1,6 @@
-import { useState, useEffect } from 'react';
+import re
+
+content = r"""import { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight, Play, Grid } from 'lucide-react';
 
 const slides = [
@@ -447,3 +449,7 @@ export default function App() {
     </div>
   );
 }
+"""
+
+with open("src/App.tsx", "w") as f:
+    f.write(content)

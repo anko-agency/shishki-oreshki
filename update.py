@@ -1,4 +1,6 @@
-<!doctype html>
+import os
+
+index_html = """<!doctype html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
@@ -15,3 +17,6 @@
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
+"""
+with open("index.html", "w") as f:
+    f.write(index_html)
