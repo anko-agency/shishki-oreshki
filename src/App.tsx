@@ -204,37 +204,49 @@ export default function App() {
   }, []);
 
   const currentSlide = slides[activeSlideIndex];
-  
-  // Wavy vertical line path for the torn edge
-  const leftEdgePath = "M0 0 L15 0 Q20 5 15 10 T15 20 T10 30 T15 40 T10 50 T15 60 T10 70 T15 80 T10 90 T15 100 T15 110 T10 120 L0 120 Z";
 
   return (
     <div className="min-h-screen bg-neutral-950 text-white tracking-[-0.02em] select-none overflow-hidden" style={{ fontFamily: "'Inter', sans-serif" }}>
 
       {/* Abstract background graphics (creative brush strokes & leaves) */}
       <div className="absolute inset-0 pointer-events-none z-15 overflow-hidden">
-        {/* Brush stroke near title */}
-        <svg className="absolute left-[10%] top-[35%] opacity-40 mix-blend-overlay w-64 h-64" viewBox="0 0 200 200" fill="none">
-          <path d="M20,100 Q80,80 150,120 Q180,140 160,160 Q100,180 40,140 Z" fill="#fff" filter="blur(8px)"/>
+        {/* Torn paper texture on the left */}
+        <svg className="absolute left-0 top-0 h-full w-[12vw] drop-shadow-2xl opacity-95 text-[#181b16] z-50" preserveAspectRatio="none" viewBox="0 0 100 1000">
+          <path d="M0,0 L80,0 Q90,50 85,100 T95,200 Q80,300 90,400 T85,500 Q95,600 80,700 T90,800 Q85,900 90,1000 L0,1000 Z" fill="currentColor" />
         </svg>
-        {/* Drawn Leaf outline */}
-        <svg className="absolute left-[45%] top-[15%] w-16 h-16 opacity-30 -rotate-12" viewBox="0 0 100 100" stroke="#fff" strokeWidth="2" fill="none">
+
+        {/* Drawn line-art pinecone on the dark paper */}
+        <svg className="absolute left-[2vw] top-[20%] w-16 h-24 opacity-60 text-white/50 z-50" viewBox="0 0 100 150" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M50 10 C30 40, 20 80, 50 140 C80 80, 70 40, 50 10 Z" />
+          <path d="M25 60 C40 70, 60 70, 75 60" />
+          <path d="M20 90 C40 100, 60 100, 80 90" />
+          <path d="M28 115 C45 125, 55 125, 72 115" />
+          <path d="M50 10 L50 140" strokeDasharray="2 4" />
+        </svg>
+
+        {/* Brush stroke near title */}
+        <svg className="absolute left-[8%] top-[30%] opacity-50 mix-blend-screen w-[40vw] h-[40vh]" viewBox="0 0 200 200" fill="none">
+          <path d="M20,100 Q80,60 150,120 Q180,150 160,160 Q100,180 40,140 Z" fill={currentSlide.accentColor} filter="blur(20px)"/>
+        </svg>
+
+        {/* Floating white leaves */}
+        <svg className="absolute left-[45%] top-[12%] w-16 h-16 opacity-40 -rotate-12 drop-shadow-lg" viewBox="0 0 100 100" stroke="#fff" strokeWidth="2.5" fill="none">
           <path d="M50 90 C30 70, 10 50, 50 10 C90 50, 70 70, 50 90 Z" />
           <path d="M50 90 L50 10" strokeDasharray="4 4" />
         </svg>
-        <svg className="absolute right-[30%] bottom-[35%] w-12 h-12 opacity-20 rotate-45" viewBox="0 0 100 100" stroke="#fff" strokeWidth="2" fill="none">
+        <svg className="absolute right-[32%] bottom-[28%] w-12 h-12 opacity-30 rotate-45" viewBox="0 0 100 100" stroke="#fff" strokeWidth="2" fill="none">
           <path d="M50 90 C30 70, 10 50, 50 10 C90 50, 70 70, 50 90 Z" />
+          <path d="M50 90 L50 10" strokeDasharray="3 3" />
         </svg>
-        {/* Dotted circle */}
-        <svg className="absolute left-[30%] bottom-[20%] w-24 h-24 opacity-20" viewBox="0 0 100 100" stroke="#fff" strokeWidth="2" fill="none" strokeDasharray="2 8" strokeLinecap="round">
-          <circle cx="50" cy="50" r="40" />
-        </svg>
-      </div>
 
-      {/* Left torn paper edge */}
-      <div className="absolute left-0 top-0 bottom-0 w-8 z-50 pointer-events-none" style={{ filter: 'drop-shadow(2px 0 4px rgba(0,0,0,0.5))' }}>
-        <svg preserveAspectRatio="none" viewBox="0 0 15 120" className="w-full h-full fill-neutral-900 text-neutral-900">
-          <path d={leftEdgePath} />
+        {/* Small doodles (dots, arrows) */}
+        <svg className="absolute right-[25%] top-[25%] w-20 h-20 opacity-30" viewBox="0 0 100 100" stroke="#fff" strokeWidth="2" fill="none" strokeLinecap="round">
+          <path d="M10 90 Q40 10 90 40" strokeDasharray="4 6" />
+          <path d="M75 35 L90 40 L85 55" />
+        </svg>
+
+        <svg className="absolute left-[28%] bottom-[22%] w-24 h-24 opacity-25" viewBox="0 0 100 100" stroke="#fff" strokeWidth="2" fill="none" strokeDasharray="2 8" strokeLinecap="round">
+          <circle cx="50" cy="50" r="40" />
         </svg>
       </div>
 
@@ -283,8 +295,10 @@ export default function App() {
           <div key={`panel-${activeSlideIndex}`} className="pointer-events-auto flex flex-col items-start ml-2">
 
             {/* Creative Torn Tape Label */}
-            <div className="inline-block bg-[#f4a123] text-black font-extrabold text-[11px] sm:text-[12px] uppercase px-4 py-1.5 transform -rotate-2 rounded-[2px] shadow-sm mb-8 hero-anim hero-fade" 
-                 style={{ clipPath: 'polygon(1% 0, 99% 1%, 100% 98%, 0% 100%)', animationDelay:'0.04s' }}>
+            <div className="inline-block relative text-black font-extrabold text-[11px] sm:text-[12px] uppercase px-5 py-2 transform -rotate-2 shadow-sm mb-8 hero-anim hero-fade" style={{ animationDelay:'0.04s' }}>
+              <svg className="absolute inset-0 w-full h-full text-[#f4a123] -z-10 drop-shadow-md" preserveAspectRatio="none" viewBox="0 0 100 100">
+                <path d="M2,5 Q50,0 98,3 L99,95 Q50,100 3,97 Z" fill="currentColor" />
+              </svg>
               Новое летнее меню
             </div>
 
@@ -299,8 +313,11 @@ export default function App() {
                 {currentSlide.titleLine2}
                 
                 {/* 2026 Brush Accent overlapping */}
-                <span className="absolute -right-8 sm:-right-16 -top-4 sm:-top-8 font-[Caveat] text-[#f4a123] transform rotate-[-12deg] drop-shadow-md" style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}>
+                <span className="absolute -right-8 sm:-right-16 -top-4 sm:-top-8 font-caveat text-[#f4a123] transform rotate-[-12deg] drop-shadow-md" style={{ fontSize: 'clamp(3rem, 7vw, 5.5rem)' }}>
                   2026
+                  <svg className="absolute -bottom-2 left-0 w-[120%] h-4 text-white opacity-80" viewBox="0 0 100 20" preserveAspectRatio="none">
+                    <path d="M0,10 Q30,20 60,10 T100,10" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+                  </svg>
                 </span>
               </span>
             </h1>
@@ -315,10 +332,10 @@ export default function App() {
               
               {/* Main creative button: circle with arrow + text outside */}
               <button className="group flex items-center gap-3.5 transition-all hover:opacity-90 active:scale-95">
-                <span className="w-12 h-12 rounded-full bg-[#f4a123] flex items-center justify-center shadow-[0_4px_12px_rgba(244,161,35,0.4)] transition-transform group-hover:scale-105">
+                <span className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-transform group-hover:scale-105 border border-white/20" style={{ backgroundColor: currentSlide.accentColor }}>
                   <ArrowRight size={18} className="text-neutral-900" strokeWidth={2.5} />
                 </span>
-                <span className="text-white font-black text-[12px] uppercase tracking-wider">
+                <span className="text-white font-black text-[12px] sm:text-[13px] uppercase tracking-wider">
                   Попробовать меню
                 </span>
               </button>
@@ -349,7 +366,7 @@ export default function App() {
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
               <path d="M12 6v6l4 2"/>
             </svg>
-            <span className="font-[Caveat] text-[#4a3621] text-2xl font-bold leading-[0.9]">
+            <span className="font-caveat text-[#4a3621] text-[26px] font-bold leading-[0.9]">
               100%<br/>натуральные<br/>ингредиенты
             </span>
           </div>
