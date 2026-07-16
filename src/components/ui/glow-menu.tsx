@@ -97,7 +97,7 @@ export const MenuBar = React.forwardRef<HTMLElement, MenuBarProps>(
         />
         <motion.ul 
           className="flex items-center gap-2 relative z-10 w-max min-w-full py-0.5 px-1"
-          animate={{ x: isHoveredRight ? "-32%" : "0%" }}
+          animate={{ x: isHoveredRight ? "-48%" : "0%" }}
           transition={{ type: "spring", stiffness: 60, damping: 18 }}
         >
           {items.map((item) => {
