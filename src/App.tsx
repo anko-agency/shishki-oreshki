@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight, Play, Grid } from 'lucide-react';
+import { MenuBar } from './components/ui/glow-menu';
 
 const slides = [
   {
@@ -279,39 +280,24 @@ export default function App() {
               </div>
             </div>
 
-            {/* Thumbnails - open layout */}
-            <div className="flex items-center gap-6 sm:gap-10 overflow-x-auto no-scrollbar py-4 px-2 select-none flex-1 justify-center md:justify-start ml-0 md:ml-12 w-full max-w-full">
-              {slides.map((slide, idx) => {
-                const isActive = idx === activeSlideIndex;
-                return (
-                  <div
-                    key={slide.id}
-                    onClick={() => setActiveSlideIndex(idx)}
-                    className="flex items-center gap-3 cursor-pointer group transition-all relative py-2 px-3 flex-shrink-0"
-                  >
-                    {/* Active Background Paint Stroke (Tape) */}
-                    {isActive && (
-                      <div className="absolute inset-0 z-0 opacity-100 flex items-center justify-center">
-                        <SvgMask src="/assets_v4/img_10.png" className="absolute w-[150%] h-[160%] max-w-none opacity-95 drop-shadow-md" color={slide.accentColor} />
-                      </div>
-                    )}
-
-                    {/* Circle Image */}
-                    <div className="w-[50px] h-[50px] sm:w-[56px] sm:h-[56px] rounded-full flex items-center justify-center bg-white/10 backdrop-blur-md z-10 shadow-lg border border-white/20"
-                         style={{ transform: isActive ? 'scale(1.1)' : 'scale(1)' }}>
-                      <img src={slide.thumb} className="w-[85%] h-[85%] object-contain drop-shadow-lg" alt={slide.shortLabel} />
-                    </div>
-
-                    {/* Label placed on the right */}
-                    <span
-                      className={`text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-left leading-[1.2] whitespace-pre-line z-10 transition-colors ${isActive ? 'text-neutral-950' : 'text-white/60 group-hover:text-white/90'}`}
-                      style={{ maxWidth: '100px' }}
-                    >
-                      {slide.buttonLabel}
-                    </span>
-                  </div>
-                );
-              })}
+            {/* Thumbnails - Glow Menu Integration */}
+            <div className="flex-1 ml-0 md:ml-12 w-full max-w-full md:max-w-[70%]">
+              <MenuBar 
+                items={slides.map(slide => ({
+                  icon: (props: any) => <img src={slide.thumb} alt={slide.shortLabel} {...props} className="h-6 w-6 object-contain" />,
+                  label: slide.buttonLabel,
+                  href: '#',
+                  gradient: `radial-gradient(circle, ${slide.accentColor}33 0%, ${slide.accentColor}11 50%, transparent 100%)`,
+                  iconColor: "",
+                  color: slide.accentColor
+                }))}
+                activeItem={currentSlide.buttonLabel}
+                onItemClick={(label) => {
+                  const idx = slides.findIndex(s => s.buttonLabel === label);
+                  if (idx !== -1) setActiveSlideIndex(idx);
+                }}
+                className="w-full bg-black/40 border-white/10"
+              />
             </div>
 
             {/* Grid button */}
