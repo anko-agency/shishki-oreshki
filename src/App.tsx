@@ -257,21 +257,32 @@ function CircularBadge({ accent }: { accent: string }) {
   const text = 'ТОЛЬКО НАТУРАЛЬНЫЕ · ИНГРЕДИЕНТЫ · ';
   const radius = 42;
   return (
-    <div className="relative w-[108px] h-[108px] flex-shrink-0">
-      <svg viewBox="0 0 110 110" className="w-full h-full animate-[spin_18s_linear_infinite]">
+    <div className="relative w-[110px] h-[110px] flex-shrink-0">
+      <svg viewBox="0 0 110 110" className="w-full h-full">
         <defs>
           <path id="circ" d={`M 55 55 m -${radius} 0 a ${radius} ${radius} 0 1 1 ${radius*2} 0 a ${radius} ${radius} 0 1 1 -${radius*2} 0`} />
         </defs>
-        <circle cx="55" cy="55" r={radius} fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth="1.5" />
-        <text fontSize="8" fontFamily="Inter,sans-serif" fontWeight="800" letterSpacing="2" fill="rgba(255,255,255,0.8)">
-          <textPath href="#circ">{text}</textPath>
-        </text>
+        {/* Spinning text container */}
+        <g className="animate-[spin_24s_linear_infinite]" style={{ transformOrigin: '55px 55px' }}>
+          <circle cx="55" cy="55" r={radius} fill="none" stroke="rgba(255,255,255,0.14)" strokeWidth="1.5" />
+          <text fontSize="7.2" fontFamily="Inter,sans-serif" fontWeight="900" letterSpacing="1.8" fill="rgba(255,255,255,0.75)">
+            <textPath href="#circ">{text}</textPath>
+          </text>
+        </g>
+        {/* Inner background circle */}
+        <circle cx="55" cy="55" r="26" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
+        {/* Beautiful two detailed leaves matching the user request crop */}
+        <g transform="translate(55, 55) scale(0.95)">
+          {/* Leaf 1 */}
+          <path d="M-2 -2 C-14 -12, -22 0, -4 14 C-4 14, -8 4, -2 -2" fill={accent} opacity="0.9" />
+          <path d="M-2 -2 C-14 -12, -22 0, -4 14 Z" stroke="#fff" strokeWidth="0.5" fill="none" opacity="0.3" />
+          <path d="M-10 4 C-6 1, -2 -1, -4 14" stroke="#fff" strokeWidth="0.8" fill="none" opacity="0.5" />
+          {/* Leaf 2 */}
+          <path d="M12 -8 C2 -16, -10 -4, 2 12 C2 12, 4 2, 12 -8" fill={accent} opacity="0.75" />
+          <path d="M12 -8 C2 -16, -10 -4, 2 12 Z" stroke="#fff" strokeWidth="0.5" fill="none" opacity="0.3" />
+          <path d="M4 -2 C2 -5, -4 -7, 2 12" stroke="#fff" strokeWidth="0.8" fill="none" opacity="0.5" />
+        </g>
       </svg>
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="w-12 h-12 rounded-full border flex items-center justify-center" style={{ borderColor: `${accent}60`, background: `${accent}18` }}>
-          <span className="text-xl">🍃</span>
-        </div>
-      </div>
     </div>
   );
 }
@@ -418,8 +429,8 @@ export default function App() {
           </div>
         </div>
 
-        {/* Circular badge — top right within content half */}
-        <div className="absolute z-30 hidden md:block" style={{ top:'88px', right:'calc(54% + 16px)' }}>
+        {/* Circular badge — positioned directly under the 'Заказать столик' button */}
+        <div className="absolute z-30 hidden md:block" style={{ top: '84px', right: '114px' }}>
           <CircularBadge accent={currentSlide.accentColor} />
         </div>
 
