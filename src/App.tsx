@@ -139,7 +139,7 @@ export default function App() {
                 {labels[tab]}
                 {isActive && (
                   <svg className="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-[120%] h-[6px]" preserveAspectRatio="none" viewBox="0 0 40 10" fill="none">
-                    <path d="M 0 5 Q 5 0, 10 5 T 20 5 T 30 5 T 40 5" stroke="#f4a123" strokeWidth="3" strokeLinecap="round"/>
+                    <path d="M 0 5 Q 5 0, 10 5 T 20 5 T 30 5 T 40 5" stroke={currentSlide.accentColor} strokeWidth="3" strokeLinecap="round" style={{ transition: 'stroke 0.7s ease' }}/>
                   </svg>
                 )}
               </button>
@@ -148,7 +148,10 @@ export default function App() {
         </div>
 
         <div className="flex items-center gap-5 relative z-50">
-          <button className="hidden md:flex bg-[#f4a123] hover:bg-[#ffb03a] text-neutral-950 text-[13px] font-extrabold uppercase tracking-widest px-8 py-3.5 rounded-full items-center gap-2 transition-all shadow-[0_4px_14px_rgba(244,161,35,0.4)]">
+          <button 
+            className="hidden md:flex text-neutral-950 text-[13px] font-extrabold uppercase tracking-widest px-8 py-3.5 rounded-full items-center gap-2 transition-all"
+            style={{ backgroundColor: currentSlide.accentColor, boxShadow: `0 4px 14px ${currentSlide.accentColor}66` }}
+          >
             <span>Заказать столик</span>
             <ArrowRight size={15} strokeWidth={3} />
           </button>
@@ -168,14 +171,14 @@ export default function App() {
 
             {/* Creative Torn Tape Label */}
             <div className="inline-block relative text-black font-extrabold text-[12px] sm:text-[13px] uppercase px-6 py-2.5 transform -rotate-3 mb-10 ml-4">
-              <SvgMask src="/assets_v4/img_11.png" className="absolute inset-0 w-full h-[120%] -top-[10%] -z-10 drop-shadow-md" color="#f4a123" />
+              <SvgMask src="/assets_v4/img_10.png" className="absolute inset-0 w-full h-[120%] -top-[10%] -z-10 drop-shadow-md" color={currentSlide.accentColor} style={{ transition: 'background-color 0.7s ease' }} />
               Новое летнее меню
             </div>
 
             {/* Dynamic Drink Title */}
             <h1 className="flex flex-col items-start leading-[1] mb-8 relative w-full drop-shadow-2xl uppercase font-black tracking-tight" style={{ fontSize: 'clamp(4rem, 8vw, 6.5rem)' }}>
               {currentSlide.buttonLabel.split('\n').map((line, idx) => (
-                <span key={idx} className={idx === 1 ? "text-[#f4a123]" : "text-white"} style={{ textShadow:'0 10px 30px rgba(0,0,0,0.7)' }}>
+                <span key={idx} className={idx === 1 ? "" : "text-white"} style={{ color: idx === 1 ? currentSlide.accentColor : undefined, textShadow:'0 10px 30px rgba(0,0,0,0.7)', transition: 'color 0.7s ease' }}>
                   {line}
                 </span>
               ))}
@@ -190,7 +193,7 @@ export default function App() {
             <div className="flex flex-wrap items-center gap-8 ml-4">
               {/* Main creative button: circle with arrow + text outside */}
               <button className="group flex items-center gap-4 transition-all hover:opacity-90 active:scale-95">
-                <span className="w-14 h-14 rounded-full bg-[#f4a123] flex items-center justify-center shadow-[0_4px_20px_rgba(244,161,35,0.5)] transition-transform group-hover:scale-110">
+                <span className="w-14 h-14 rounded-full flex items-center justify-center transition-transform group-hover:scale-110" style={{ backgroundColor: currentSlide.accentColor, boxShadow: `0 4px 20px ${currentSlide.accentColor}80` }}>
                   <ArrowRight size={20} className="text-neutral-900" strokeWidth={3} />
                 </span>
                 <span className="text-white font-black text-[14px] sm:text-[15px] uppercase tracking-widest drop-shadow-md">
@@ -237,7 +240,7 @@ export default function App() {
                 style={{ backgroundImage: `url(${slide.image})` }} />
               {/* Colored brush stroke / glow behind the drink */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-50 mix-blend-overlay">
-                 <div className="w-[80vh] h-[80vh] rounded-full blur-[100px]" style={{ backgroundColor: slide.accentColor, transform: 'translate(15%, 5%)' }}></div>
+                 <div className="w-[80vh] h-[80vh] rounded-full blur-[100px] transition-colors duration-700" style={{ backgroundColor: slide.accentColor, transform: 'translate(15%, 5%)' }}></div>
               </div>
             </div>
           ))}
@@ -253,7 +256,7 @@ export default function App() {
             <div className="flex flex-col items-center md:items-start relative z-10 mb-2 md:mb-0">
               <span className="font-[Bebas_Neue] text-white/80 text-[48px] md:text-[54px] leading-[0.8] tracking-widest drop-shadow-md">ЛЕТО</span>
               <div className="flex items-center gap-1 relative mt-1">
-                <span className="font-caveat text-[#f4a123] text-[42px] md:text-[46px] leading-[0.8] font-bold drop-shadow-md">2026</span>
+                <span className="font-caveat text-[42px] md:text-[46px] leading-[0.8] font-bold drop-shadow-md" style={{ color: currentSlide.accentColor, transition: 'color 0.7s ease' }}>2026</span>
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" className="opacity-80 absolute -right-8 top-0" style={{ transform: 'rotate(15deg)' }}>
                   <circle cx="12" cy="12" r="4"/>
                   <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" strokeLinecap="round"/>
@@ -274,7 +277,7 @@ export default function App() {
                     {/* Active Background Paint Stroke (Tape) */}
                     {isActive && (
                       <div className="absolute inset-0 z-0 opacity-100 flex items-center justify-center">
-                        <SvgMask src="/assets_v4/img_11.png" className="absolute w-[150%] h-[160%] max-w-none opacity-95 drop-shadow-md" color="#f4a123" />
+                        <SvgMask src="/assets_v4/img_10.png" className="absolute w-[150%] h-[160%] max-w-none opacity-95 drop-shadow-md" color={slide.accentColor} />
                       </div>
                     )}
 
