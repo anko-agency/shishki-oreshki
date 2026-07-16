@@ -60,21 +60,11 @@ const sharedTransition: Transition = {
   duration: 0.5,
 }
 
-const listVariants: Variants = {
-  initial: { x: 0 },
-  hover: { 
-    x: "-35%", 
-    transition: { 
-      type: "spring" as const,
-      stiffness: 60,
-      damping: 18
-    } 
-  }
-}
+
 
 export const MenuBar = React.forwardRef<HTMLElement, MenuBarProps>(
   ({ className, items, activeItem, onItemClick, ...props }, ref) => {
-    // Hardcoded to dark theme for this project
+    const [isHoveredRight, setIsHoveredRight] = React.useState(false)
     const isDarkTheme = true
 
     return (
@@ -84,8 +74,13 @@ export const MenuBar = React.forwardRef<HTMLElement, MenuBarProps>(
           "p-1.5 rounded-full bg-gradient-to-b from-background/80 to-background/40 backdrop-blur-lg border border-border/40 shadow-lg relative overflow-hidden",
           className,
         )}
-        initial="initial"
-        whileHover="hover"
+        onMouseMove={(e) => {
+          const rect = e.currentTarget.getBoundingClientRect()
+          const x = e.clientX - rect.left
+          // Trigger slide only when hovering the right 30% of the menu
+          setIsHoveredRight(x > rect.width * 0.70)
+        }}
+        onMouseLeave={() => setIsHoveredRight(false)}
         {...props}
       >
         <motion.div
@@ -97,8 +92,9 @@ export const MenuBar = React.forwardRef<HTMLElement, MenuBarProps>(
           variants={navGlowVariants}
         />
         <motion.ul 
-          className="flex items-center gap-2 relative z-10 w-full overflow-x-auto no-scrollbar py-0.5 px-1"
-          variants={listVariants}
+          className="flex items-center gap-2 relative z-10 w-max min-w-full py-0.5 px-1"
+          animate={{ x: isHoveredRight ? "-32%" : "0%" }}
+          transition={{ type: "spring", stiffness: 60, damping: 18 }}
         >
           {items.map((item) => {
             const Icon = item.icon
