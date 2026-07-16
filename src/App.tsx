@@ -104,21 +104,21 @@ export default function App() {
       <div className="absolute inset-0 pointer-events-none z-15 overflow-hidden">
         
         {/* Left margin torn paper */}
-        <div className="absolute left-0 top-0 bottom-0 w-[14vw] max-w-[200px] z-[55] drop-shadow-[10px_0_20px_rgba(0,0,0,0.9)]">
-          <SvgMask src="/assets_v4/img_2.png" className="w-full h-full object-cover object-right" color="#111210" />
+        <div className="absolute left-0 top-0 bottom-0 w-[14vw] max-w-[200px] z-[55] drop-shadow-[10px_0_20px_rgba(0,0,0,0.9)] pointer-events-none">
+          <img src="/assets_v4/img_2.png" className="w-full h-full object-cover object-right" alt="torn edge" />
           
           {/* Pinecone drawing on the dark paper */}
-          <SvgMask src="/assets_v4/img_4.png" className="absolute left-[3vw] bottom-[15%] w-32 h-40 opacity-70 transform -rotate-12" color="#fff" />
-          <SvgMask src="/assets_v4/img_4.png" className="absolute left-[2vw] top-[30%] w-20 h-28 opacity-40 transform rotate-45" color="#fff" />
+          <img src="/assets_v4/img_4.png" className="absolute left-[3vw] bottom-[15%] w-32 h-auto opacity-70 transform -rotate-12" alt="pinecone" />
+          <img src="/assets_v4/img_4.png" className="absolute left-[2vw] top-[30%] w-20 h-auto opacity-40 transform rotate-45" alt="pinecone" />
         </div>
 
         {/* Scattered nuts and leaves in the background */}
-        <SvgMask src="/assets_v4/img_3.png" className="absolute left-[38%] top-[18%] w-24 h-24 opacity-80 transform rotate-12" color="#fff" />
-        <SvgMask src="/assets_v4/img_18.png" className="absolute right-[25%] bottom-[25%] w-48 h-56 opacity-40" color="#fff" />
+        <img src="/assets_v4/img_3.png" className="absolute left-[38%] top-[18%] w-24 h-auto opacity-80 transform rotate-12" alt="nuts" />
+        <img src="/assets_v4/img_18.png" className="absolute right-[25%] bottom-[25%] w-48 h-auto opacity-40" alt="scattered nuts" />
         
         {/* White brush swooshes */}
-        <SvgMask src="/assets_v4/img_12.png" className="absolute left-[45%] top-[12%] w-48 h-12 opacity-80 transform -rotate-12" color="#fff" />
-        <SvgMask src="/assets_v4/img_12.png" className="absolute left-[22%] bottom-[32%] w-56 h-12 opacity-40 transform rotate-[160deg]" color="#fff" />
+        <img src="/assets_v4/img_12.png" className="absolute left-[45%] top-[12%] w-48 h-auto opacity-80 transform -rotate-12" alt="brush" />
+        <img src="/assets_v4/img_12.png" className="absolute left-[22%] bottom-[32%] w-56 h-auto opacity-40 transform rotate-[160deg]" alt="brush" />
 
       </div>
 
@@ -184,17 +184,17 @@ export default function App() {
               {/* Add textured overlay to ЛЕТО using a mask or CSS filter if needed, but plain font works great */}
               <span className="block font-[Bebas_Neue] text-white tracking-widest relative" style={{ fontSize:'clamp(7rem, 20vw, 16rem)', textShadow:'0 10px 40px rgba(0,0,0,0.8)' }}>
                 ЛЕТО
-                <SvgMask src="/assets_v4/img_12.png" className="absolute right-[-10%] top-[40%] w-32 h-8 opacity-40 mix-blend-overlay" color="#fff" />
+                <img src="/assets_v4/img_12.png" className="absolute right-[-10%] top-[40%] w-32 h-auto opacity-40 mix-blend-overlay" alt="texture" />
               </span>
               
               {/* 2026 Brush Accent overlapping */}
               <span className="absolute left-[38%] top-[35%] font-caveat text-[#f4a123] transform rotate-[-8deg] drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)] z-10" style={{ fontSize: 'clamp(6rem, 15vw, 12rem)', fontWeight: 700 }}>
                 2026
                 {/* Brush stroke underline from SVG instead of CSS */}
-                <SvgMask src="/assets_v4/img_12.png" className="absolute -bottom-10 left-[-15%] w-[130%] h-12 opacity-95 transform -rotate-3" color="#fff" />
+                <img src="/assets_v4/img_12.png" className="absolute -bottom-10 left-[-15%] w-[130%] h-auto opacity-95 transform -rotate-3" alt="brush stroke" />
                 
                 {/* Drawn pinecone next to 2026 */}
-                <SvgMask src="/assets_v4/img_4.png" className="absolute -right-[35%] top-1/2 -translate-y-1/2 w-24 h-32 opacity-90 transform rotate-12" color="#fff" />
+                <img src="/assets_v4/img_4.png" className="absolute -right-[35%] top-1/2 -translate-y-1/2 w-24 h-auto opacity-90 transform rotate-12" alt="pinecone" />
               </span>
             </h1>
 
