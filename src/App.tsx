@@ -10,7 +10,7 @@ const slides = [
     titleColor: '#9db08c',
     accentColor: '#9db08c',
     descLeft: 'Освежающие напитки для яркого лета в Шишки Орешки. Натуральные ингредиенты, насыщенный вкус, заряд прохлады в каждом глотке.',
-    buttonLabel: 'БАБЛ МАТЧА\nЛАТТЕ',
+    buttonLabel: 'БАБЛ\nМАТЧА\nЛАТТЕ',
     shortLabel: 'БАБЛ МАТЧА ЛАТТЕ',
   },
   {
@@ -20,7 +20,7 @@ const slides = [
     titleColor: '#9bbbe3',
     accentColor: '#9bbbe3',
     descLeft: 'Нежное сочетание спелой лесной черники с утонченным ароматом дамасской розы, сливочной основы и мягких жемчужин черной тапиоки.',
-    buttonLabel: 'БАБЛ ЧЕРНИКА\nРОЗА',
+    buttonLabel: 'БАБЛ\nЧЕРНИКА\nРОЗА',
     shortLabel: 'БАБЛ ЧЕРНИКА РОЗА',
   },
   {
@@ -30,7 +30,7 @@ const slides = [
     titleColor: '#c5aade',
     accentColor: '#c5aade',
     descLeft: 'Экзотический сливочный латте на основе фиолетового корня таро, обладающего уникальным песочно-ореховым вкусом, с добавлением тапиоки.',
-    buttonLabel: 'БАБЛ ТАРО\nЛАТТЕ',
+    buttonLabel: 'БАБЛ\nТАРО\nЛАТТЕ',
     shortLabel: 'БАБЛ ТАРО ЛАТТЕ',
   },
   {
@@ -40,7 +40,7 @@ const slides = [
     titleColor: '#e38da2',
     accentColor: '#e38da2',
     descLeft: 'Освежающий таёжный лимонад на основе терпкой сибирской клюквы, бодрящего сока свежего лайма и прохладного тоника с кубиками льда.',
-    buttonLabel: 'ТОНИК\nКЛЮКВА-ЛАЙМ',
+    buttonLabel: 'ТОНИК\nКЛЮКВА\nЛАЙМ',
     shortLabel: 'ТОНИК КЛЮКВА-ЛАЙМ',
   },
   {
@@ -60,7 +60,7 @@ const slides = [
     titleColor: '#d6b796',
     accentColor: '#d6b796',
     descLeft: 'Насыщенный сливочный кофе с добавлением обжаренного лесного ореха, нежных сливок и сладкого карамельного сиропа.',
-    buttonLabel: 'АЙС ЛАТТЕ\nЗОЛОТОЙ КЛЮЧИК',
+    buttonLabel: 'АЙС ЛАТТЕ\nЗОЛОТОЙ\nКЛЮЧИК',
     shortLabel: 'ОРЕХОВЫЙ РАФ',
   },
 ];
@@ -133,27 +133,27 @@ export default function App() {
 
       {/* NAV */}
       <nav className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-8 sm:px-12 py-6 bg-gradient-to-b from-black/80 via-black/40 to-transparent">
-        <div className="flex items-center select-none ml-4 relative z-50 gap-3">
+        <div className="flex items-center select-none ml-4 relative z-50 gap-16">
           <img src="/logo_horizontal.png" className="h-[28px] sm:h-[32px] w-auto object-contain filter drop-shadow-md" alt="Шишки & Орешки" />
-        </div>
 
-        <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 gap-10 items-center mt-1 z-50">
-          {(['Menu','About','Locations','Franchise','Contacts'] as const).map((tab) => {
-            const labels: Record<string,string> = { Menu:'МЕНЮ', About:'О НАС', Locations:'АДРЕСА', Franchise:'ФРАНШИЗА', Contacts:'КОНТАКТЫ' };
-            const isActive = activeTab === tab;
-            return (
-              <button key={tab} onClick={() => setActiveTab(tab)}
-                className={`relative text-[13px] font-bold uppercase tracking-widest transition-colors duration-300 pb-1.5 ${isActive ? 'text-white' : 'text-white/60 hover:text-white/90'}`}
-              >
-                {labels[tab]}
-                {isActive && (
-                  <svg className="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-[120%] h-[6px]" preserveAspectRatio="none" viewBox="0 0 40 10" fill="none">
-                    <path d="M 0 5 Q 5 0, 10 5 T 20 5 T 30 5 T 40 5" stroke={currentSlide.accentColor} strokeWidth="3" strokeLinecap="round" style={{ transition: 'stroke 0.7s ease' }}/>
-                  </svg>
-                )}
-              </button>
-            );
-          })}
+          <div className="hidden md:flex gap-8 items-center mt-1">
+            {(['Menu','About','Locations','Franchise','Contacts'] as const).map((tab) => {
+              const labels: Record<string,string> = { Menu:'МЕНЮ', About:'О НАС', Locations:'АДРЕСА', Franchise:'ФРАНШИЗА', Contacts:'КОНТАКТЫ' };
+              const isActive = activeTab === tab;
+              return (
+                <button key={tab} onClick={() => setActiveTab(tab)}
+                  className={`relative text-[13px] font-bold uppercase tracking-widest transition-colors duration-300 pb-1.5 ${isActive ? 'text-white' : 'text-white/60 hover:text-white/90'}`}
+                >
+                  {labels[tab]}
+                  {isActive && (
+                    <svg className="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-[120%] h-[6px]" preserveAspectRatio="none" viewBox="0 0 40 10" fill="none">
+                      <path d="M 0 5 Q 5 0, 10 5 T 20 5 T 30 5 T 40 5" stroke={currentSlide.accentColor} strokeWidth="3" strokeLinecap="round" style={{ transition: 'stroke 0.7s ease' }}/>
+                    </svg>
+                  )}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         <div className="flex items-center gap-5 relative z-50">
@@ -194,7 +194,7 @@ export default function App() {
             {/* Dynamic Drink Title */}
             <h1 className="flex flex-col items-start leading-[1] mb-8 relative w-full drop-shadow-2xl uppercase font-black tracking-tight" style={{ fontSize: 'clamp(4rem, 8vw, 6.5rem)' }}>
               {currentSlide.buttonLabel.split('\n').map((line, idx) => (
-                <span key={idx} className={idx === 1 ? "" : "text-white"} style={{ color: idx === 1 ? currentSlide.accentColor : undefined, textShadow:'0 10px 30px rgba(0,0,0,0.7)', transition: 'color 0.7s ease' }}>
+                <span key={idx} className={idx >= 1 ? "" : "text-white"} style={{ color: idx >= 1 ? currentSlide.accentColor : undefined, textShadow:'0 10px 30px rgba(0,0,0,0.7)', transition: 'color 0.7s ease' }}>
                   {line}
                 </span>
               ))}
@@ -266,10 +266,10 @@ export default function App() {
 
         {/* BOTTOM BAR - Borderless, open layout */}
         <div className="absolute bottom-8 left-0 right-0 z-[100]">
-          <div className="flex flex-col md:flex-row items-center justify-start md:gap-16 px-8 md:px-16 max-w-[1600px] mx-auto w-full">
+          <div className="flex flex-col md:flex-row items-center justify-start md:gap-8 px-8 md:px-16 max-w-[1600px] mx-auto w-full">
 
             {/* Left Season Title block */}
-            <div className="flex flex-col items-center md:items-start relative z-10 mb-2 md:mb-0">
+            <div className="flex flex-col items-center md:items-start relative z-10 mb-2 md:mb-0 md:ml-40">
               <span className="font-[Bebas_Neue] text-white/80 text-[48px] md:text-[54px] leading-[0.8] tracking-widest drop-shadow-md">ЛЕТО</span>
               <div className="flex items-center gap-1 relative mt-1">
                 <span className="font-caveat text-[42px] md:text-[46px] leading-[0.8] font-bold drop-shadow-md" style={{ color: currentSlide.accentColor, transition: 'color 0.7s ease' }}>2026</span>
