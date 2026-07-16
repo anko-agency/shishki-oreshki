@@ -64,7 +64,7 @@ const sharedTransition: Transition = {
 
 export const MenuBar = React.forwardRef<HTMLElement, MenuBarProps>(
   ({ className, items, activeItem, onItemClick, ...props }, ref) => {
-    const [isHoveredRight, setIsHoveredRight] = React.useState(false)
+    const [menuX, setMenuX] = React.useState("0%")
     const isDarkTheme = true
 
     return (
@@ -77,14 +77,20 @@ export const MenuBar = React.forwardRef<HTMLElement, MenuBarProps>(
         onMouseMove={(e) => {
           const rect = e.currentTarget.getBoundingClientRect()
           const x = e.clientX - rect.left
-          // Slide left (translate) when hovering the right 30%
-          if (x > rect.width * 0.70) {
-            setIsHoveredRight(true)
-          // Slide back to start only when hovering the left 30%
-          } else if (x < rect.width * 0.30) {
-            setIsHoveredRight(false)
+          const x_ratio = x / rect.width
+
+          let targetPct = 0
+          if (x_ratio < 0.20) {
+            targetPct = 0
+          } else if (x_ratio > 0.80) {
+            targetPct = -48
+          } else {
+            const t = (x_ratio - 0.20) / 0.60
+            targetPct = -48 * t
           }
+          setMenuX(`${targetPct}%`)
         }}
+        onMouseLeave={() => setMenuX("0%")}
         {...props}
       >
         <motion.div
@@ -97,7 +103,7 @@ export const MenuBar = React.forwardRef<HTMLElement, MenuBarProps>(
         />
         <motion.ul 
           className="flex items-center gap-2 relative z-10 w-max min-w-full py-0.5 px-1"
-          animate={{ x: isHoveredRight ? "-48%" : "0%" }}
+          animate={{ x: menuX }}
           transition={{ type: "spring", stiffness: 60, damping: 18 }}
         >
           {items.map((item) => {
