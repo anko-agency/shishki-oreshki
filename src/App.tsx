@@ -247,7 +247,7 @@ export default function App() {
 
         {/* Rotating Halal Badge (Floating without paper) */}
         <div className="absolute z-[60] right-[8%] top-[30%] hidden lg:flex flex-col items-center justify-center transform rotate-6 drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]" 
-             style={{ width: '180px', height: '180px', transform: 'rotate(6deg) translate(-100px, -60px)' }}>
+             style={{ width: '180px', height: '180px', transform: 'rotate(6deg) translate(-200px, -80px)' }}>
           
           <div className="relative z-10 flex flex-col items-center justify-center text-center">
             <svg width="150" height="150" viewBox="0 0 24 24" fill="none" className="select-none">
