@@ -247,7 +247,7 @@ export default function App() {
 
         {/* Rotating Halal Badge (Floating without paper) */}
         <div className="absolute z-[60] right-[8%] top-[30%] hidden lg:flex flex-col items-center justify-center transform rotate-6 drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]" 
-             style={{ width: '180px', height: '180px' }}>
+             style={{ width: '180px', height: '180px', transform: 'rotate(6deg) translate(-100px, -60px)' }}>
           
           <div className="relative z-10 flex flex-col items-center justify-center text-center">
             <svg width="150" height="150" viewBox="0 0 24 24" fill="none" className="select-none">
@@ -260,11 +260,11 @@ export default function App() {
               <text x="12" y="11.5" fontSize="4.2" fontWeight="bold" fontFamily="sans-serif" textAnchor="middle" fill="#ffffff">حلال</text>
               <text x="12" y="15" fontSize="2.0" fontWeight="900" fontFamily="sans-serif" textAnchor="middle" fill="#ffffff" letterSpacing="0.3">HALAL</text>
 
-              {/* Rotating circular text */}
-              <g style={{ animation: 'spin 15s linear infinite', transformOrigin: '12px 12px' }}>
-                <text fill="#ffffff" fontSize="1.3" fontWeight="bold" fontFamily="sans-serif" letterSpacing="0.18">
+              {/* Rotating circular text - repeated twice to wrap 360 degrees */}
+              <g style={{ animation: 'spin 20s linear infinite', transformOrigin: '12px 12px' }}>
+                <text fill="#ffffff" fontSize="0.75" fontWeight="bold" fontFamily="sans-serif" letterSpacing="0.12">
                   <textPath href="#circlePath" startOffset="0%">
-                    НАТУРАЛЬНЫЕ ИНГРЕДИЕНТЫ • 100% • 
+                    НАТУРАЛЬНЫЕ ИНГРЕДИЕНТЫ • 100% • НАТУРАЛЬНЫЕ ИНГРЕДИЕНТЫ • 100% • 
                   </textPath>
                 </text>
               </g>
