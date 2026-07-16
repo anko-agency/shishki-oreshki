@@ -333,8 +333,13 @@ export default function App() {
             );
           })}
 
-          {/* Dark olive/black gradient overlay to dim the background for maximum white text contrast, concentrated on the left text area */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-transparent md:bg-gradient-to-r md:from-black/85 md:from-[13%] md:via-black/30 md:via-[30%] md:to-transparent z-20 pointer-events-none" />
+          {/* Dark gradient overlay — strictly left text column only, transparent before the drink */}
+          <div
+            className="absolute inset-0 z-20 pointer-events-none"
+            style={{
+              background: 'linear-gradient(to right, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.6) 18%, rgba(0,0,0,0) 38%)'
+            }}
+          />
         </div>
 
         {/* Floating Bottom Selector Bar */}
