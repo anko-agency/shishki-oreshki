@@ -393,15 +393,7 @@ export default function App() {
               {currentSlide.descLeft}
             </p>
 
-            {/* Props — icon + text plain */}
-            <div className="flex flex-wrap gap-x-6 gap-y-3 mb-8 hero-anim hero-fade" style={{ animationDelay:'0.52s' }}>
-              {currentSlide.props.map((prop, i) => (
-                <div key={i} className="flex items-center gap-2 text-[11px] text-white/65 font-semibold tracking-wide uppercase">
-                  <span className="text-[15px]">{prop.icon}</span>
-                  <span>{prop.text}</span>
-                </div>
-              ))}
-            </div>
+
 
             {/* Buttons */}
             <div className="flex flex-wrap items-center gap-5 hero-anim hero-fade" style={{ animationDelay:'0.64s' }}>
@@ -419,14 +411,7 @@ export default function App() {
             </div>
           </div>
 
-          {/* ЛЕТО 2026 — bottom left */}
-          <div className="pointer-events-auto hidden md:block pb-2 hero-anim hero-fade" style={{ animationDelay:'0.8s' }}>
-            <p className="text-[9px] font-bold tracking-[0.22em] uppercase text-white/25 mb-0.5">Сезон</p>
-            <div className="flex items-baseline gap-2 leading-none">
-              <span className="font-black uppercase tracking-[-0.04em] text-white" style={{ fontSize:'clamp(2.2rem,4.5vw,3.5rem)' }}>ЛЕТО</span>
-              <span className="font-black uppercase tracking-[-0.04em]" style={{ fontSize:'clamp(2.2rem,4.5vw,3.5rem)', color: currentSlide.accentColor }}>2026</span>
-            </div>
-          </div>
+
         </div>
 
         {/* Circular badge — positioned directly under the 'Заказать столик' button */}
@@ -457,14 +442,18 @@ export default function App() {
         </div>
 
         {/* BOTTOM BAR — dark */}
-        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-2.5rem)] max-w-5xl">
+        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-2.5rem)] max-w-6xl">
           <div className="bg-[#111111]/96 backdrop-blur-md border border-white/8 rounded-[28px] py-3 px-4 sm:px-6 flex items-center justify-between shadow-2xl">
 
-            {/* Left cup icon */}
-            <div className="flex items-center gap-2.5 flex-shrink-0">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: currentSlide.accentColor }}>
-                <span className="text-[17px]">☕</span>
+            {/* Left Season Title block integrated directly into bottom bar */}
+            <div className="flex flex-col items-start pr-6 pl-2 border-r border-white/10 relative mr-2 flex-shrink-0">
+              <span className="text-[8px] font-bold tracking-[0.25em] uppercase text-white/40 mb-0.5 leading-none">Сезон</span>
+              <div className="flex items-baseline gap-1 leading-none">
+                <span className="font-black text-lg sm:text-[22px] tracking-wide text-white">ЛЕТО</span>
+                <span className="font-black text-lg sm:text-[22px] tracking-wide ml-1.5" style={{ color: currentSlide.accentColor }}>2026</span>
               </div>
+              {/* Vertical line diamond connector */}
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-1.5 h-1.5 rotate-45 bg-[#111111] border border-white/20 z-10" />
             </div>
 
             {/* Thumbnails with custom SVG infographics and labels on the right */}
