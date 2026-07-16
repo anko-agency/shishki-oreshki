@@ -100,6 +100,14 @@ export default function App() {
   return (
     <div className="min-h-screen bg-neutral-950 text-white tracking-[-0.02em] select-none overflow-hidden" style={{ fontFamily: "'Inter', sans-serif" }}>
 
+      {/* SVG Filters for UI elements */}
+      <svg width="0" height="0" className="absolute pointer-events-none">
+        <filter id="torn-edge">
+          <feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="2" result="noise" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+      </svg>
+
       {/* SVG Asset Overlays from Дизайн без названия (4) */}
       <div className="absolute inset-0 pointer-events-none z-15 overflow-hidden">
         
@@ -170,9 +178,16 @@ export default function App() {
           <div key={`panel-${activeSlideIndex}`} className="pointer-events-auto flex flex-col items-start mt-[-10vh]">
 
             {/* Creative Torn Tape Label */}
-            <div className="inline-block relative text-black font-extrabold text-[12px] sm:text-[13px] uppercase px-6 py-2.5 transform -rotate-3 mb-10 ml-4">
-              <SvgMask src="/assets_v4/img_10.png" className="absolute inset-0 w-full h-[120%] -top-[10%] -z-10 drop-shadow-md" color={currentSlide.accentColor} style={{ transition: 'background-color 0.7s ease' }} />
-              Новое летнее меню
+            <div className="inline-block relative font-extrabold text-[12px] sm:text-[13px] uppercase px-6 py-3 transform -rotate-3 mb-10 ml-4 z-10">
+              <div 
+                className="absolute inset-0 z-[-1] drop-shadow-md" 
+                style={{ 
+                  filter: 'url(#torn-edge)', 
+                  backgroundColor: currentSlide.accentColor, 
+                  transition: 'background-color 0.7s ease' 
+                }}
+              ></div>
+              <span className="text-black tracking-widest relative z-10 drop-shadow-sm">Новое летнее меню</span>
             </div>
 
             {/* Dynamic Drink Title */}
