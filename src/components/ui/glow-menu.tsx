@@ -63,10 +63,10 @@ const sharedTransition: Transition = {
 const listVariants: Variants = {
   initial: { x: 0 },
   hover: { 
-    x: -80, 
+    x: "-35%", 
     transition: { 
       type: "spring" as const,
-      stiffness: 80,
+      stiffness: 60,
       damping: 18
     } 
   }

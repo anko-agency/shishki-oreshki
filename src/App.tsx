@@ -95,22 +95,7 @@ const slides = [
   },
 ];
 
-// Helper to render grayscale PNGs as colored masks
-const SvgMask = ({ src, className, color, style = {} }: any) => (
-  <div 
-    className={className} 
-    style={{ 
-      backgroundColor: color || 'currentColor',
-      WebkitMaskImage: `url(${src})`, 
-      WebkitMaskSize: '100% 100%', 
-      WebkitMaskRepeat: 'no-repeat',
-      maskImage: `url(${src})`, 
-      maskSize: '100% 100%', 
-      maskRepeat: 'no-repeat',
-      ...style 
-    }} 
-  />
-);
+
 
 export default function App() {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
@@ -260,26 +245,24 @@ export default function App() {
           </div>
         </div>
 
-        {/* Paper Tag "100% натуральные ингредиенты" with Rotating Halal Badge */}
+        {/* Rotating Halal Badge (Floating without paper) */}
         <div className="absolute z-[60] right-[8%] top-[30%] hidden lg:flex flex-col items-center justify-center transform rotate-6 drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]" 
-             style={{ width: '220px', height: '180px' }}>
-          {/* Craft Paper Background Mask */}
-          <SvgMask src="/assets_v4/img_27.png" className="absolute inset-0 w-full h-full opacity-100" color="#e4d0b8" />
+             style={{ width: '180px', height: '180px' }}>
           
-          <div className="relative z-10 flex flex-col items-center justify-center text-center -mt-2">
-            <svg width="130" height="130" viewBox="0 0 24 24" fill="none" className="select-none">
+          <div className="relative z-10 flex flex-col items-center justify-center text-center">
+            <svg width="150" height="150" viewBox="0 0 24 24" fill="none" className="select-none">
               <defs>
                 <path id="circlePath" d="M 12, 12 m -8.2, 0 a 8.2,8.2 0 1,1 16.4,0 a 8.2,8.2 0 1,1 -16.4,0" />
               </defs>
               
-              {/* Halal center icon circle */}
-              <circle cx="12" cy="12" r="6" stroke="#4a3621" strokeWidth="1.2" fill="#4a3621" fillOpacity="0.05" />
-              <text x="12" y="11.5" fontSize="3.8" fontWeight="bold" fontFamily="sans-serif" textAnchor="middle" fill="#4a3621">حلال</text>
-              <text x="12" y="15" fontSize="1.8" fontWeight="900" fontFamily="sans-serif" textAnchor="middle" fill="#4a3621" letterSpacing="0.3">HALAL</text>
+              {/* Halal center icon circle - strokeWidth="0.6" (thin) */}
+              <circle cx="12" cy="12" r="6" stroke="#ffffff" strokeWidth="0.6" fill="#ffffff" fillOpacity="0.08" />
+              <text x="12" y="11.5" fontSize="4.2" fontWeight="bold" fontFamily="sans-serif" textAnchor="middle" fill="#ffffff">حلال</text>
+              <text x="12" y="15" fontSize="2.0" fontWeight="900" fontFamily="sans-serif" textAnchor="middle" fill="#ffffff" letterSpacing="0.3">HALAL</text>
 
               {/* Rotating circular text */}
               <g style={{ animation: 'spin 15s linear infinite', transformOrigin: '12px 12px' }}>
-                <text fill="#4a3621" fontSize="1.2" fontWeight="bold" fontFamily="sans-serif" letterSpacing="0.18">
+                <text fill="#ffffff" fontSize="1.3" fontWeight="bold" fontFamily="sans-serif" letterSpacing="0.18">
                   <textPath href="#circlePath" startOffset="0%">
                     НАТУРАЛЬНЫЕ ИНГРЕДИЕНТЫ • 100% • 
                   </textPath>
