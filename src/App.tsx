@@ -4,8 +4,7 @@ import { Menu, X, ArrowRight, Play, Grid } from 'lucide-react';
 const slides = [
   {
     id: 1,
-    image: '/bg_static.jpg',
-    drinkImage: '/drink_1.png',
+    image: '/bg_image_1.jpg',
     thumb: '/thumb_matcha.png',
     titleLine1: 'Тропическая',
     titleLine2: 'Бабл Матча',
@@ -20,8 +19,7 @@ const slides = [
   },
   {
     id: 2,
-    image: '/bg_static.jpg',
-    drinkImage: '/drink_2.png',
+    image: '/bg_image_2.jpg',
     thumb: '/thumb_blueberry.png',
     titleLine1: 'Бабл Черника',
     titleLine2: 'Роза',
@@ -36,8 +34,7 @@ const slides = [
   },
   {
     id: 3,
-    image: '/bg_static.jpg',
-    drinkImage: '/drink_3.png',
+    image: '/bg_image_3.jpg',
     thumb: '/thumb_taro.png',
     titleLine1: 'Бабл Таро',
     titleLine2: 'Латте',
@@ -52,8 +49,7 @@ const slides = [
   },
   {
     id: 4,
-    image: '/bg_static.jpg',
-    drinkImage: '/drink_4.png',
+    image: '/bg_image_4.jpg',
     thumb: '/thumb_cranberry.png',
     titleLine1: 'Тоник',
     titleLine2: 'Клюква-Лайм',
@@ -68,8 +64,7 @@ const slides = [
   },
   {
     id: 5,
-    image: '/bg_static.jpg',
-    drinkImage: '/drink_5.png',
+    image: '/bg_image_5.jpg',
     thumb: '/thumb_mango.png',
     titleLine1: 'Манговый',
     titleLine2: 'Фраппе',
@@ -84,8 +79,7 @@ const slides = [
   },
   {
     id: 6,
-    image: '/bg_static.jpg',
-    drinkImage: '/drink_6.png',
+    image: '/bg_image_6.jpg',
     thumb: '/thumb_latte.png',
     titleLine1: 'Ореховый',
     titleLine2: 'Раф',
@@ -316,46 +310,32 @@ export default function App() {
           </div>
         </div>
 
-        {/* === LAYER 1: Static background — never moves, never animates === */}
+        {/* Background Slides — opacity cross-fade between full background images */}
         <div className="w-full absolute inset-0 h-full z-10 overflow-hidden">
-          <div
-            className="absolute inset-0 bg-center bg-cover bg-no-repeat md:bg-[length:auto_100%] md:bg-right"
-            style={{ backgroundImage: "url('/bg_static.jpg')" }}
-          />
+          {slides.map((slide, idx) => {
+            const isActive = idx === activeSlideIndex;
+            return (
+              <div
+                key={slide.id}
+                className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                  isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
+                }`}
+              >
+                <div
+                  className="absolute inset-0 bg-center bg-cover bg-no-repeat md:bg-[length:auto_100%] md:bg-right"
+                  style={{ backgroundImage: `url(${slide.image})` }}
+                />
+              </div>
+            );
+          })}
 
-          {/* Dark gradient overlay — strictly left text column only */}
+          {/* Dark gradient overlay — left text column only */}
           <div
             className="absolute inset-0 z-20 pointer-events-none"
             style={{
               background: 'linear-gradient(to right, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.6) 18%, rgba(0,0,0,0) 38%)'
             }}
           />
-        </div>
-
-        {/* === LAYER 2: Animated drink PNG — only the drink changes === */}
-        <div className="w-full absolute inset-0 h-full z-15 overflow-hidden pointer-events-none">
-          {slides.map((slide, idx) => {
-            const isActive = idx === activeSlideIndex;
-            return (
-              <div
-                key={slide.id}
-                className={`absolute inset-0 flex items-end justify-end transition-opacity duration-600 ease-in-out ${
-                  isActive ? 'opacity-100' : 'opacity-0'
-                }`}
-              >
-                {/* Drink image positioned on the right half, bottom-aligned to sit on the table */}
-                <img
-                  key={`drink-${slide.id}-${isActive}`}
-                  src={slide.drinkImage}
-                  alt=""
-                  className={`absolute bottom-0 right-0 md:right-[2%] h-[92%] w-auto object-contain object-bottom ${
-                    isActive ? 'drink-enter' : ''
-                  }`}
-                  style={{ maxWidth: '55%' }}
-                />
-              </div>
-            );
-          })}
         </div>
 
         {/* Floating Bottom Selector Bar */}
