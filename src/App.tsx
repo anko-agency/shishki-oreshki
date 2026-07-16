@@ -251,6 +251,16 @@ export default function App() {
           
           <div className="relative z-10 flex flex-col items-center justify-center text-center">
             <svg width="150" height="150" viewBox="0 0 24 24" fill="none" className="select-none">
+              <style>{`
+                @keyframes rotate-badge {
+                  from { transform: rotate(0deg); }
+                  to { transform: rotate(360deg); }
+                }
+                .rotating-text {
+                  animation: rotate-badge 15s linear infinite;
+                  transform-origin: 12px 12px;
+                }
+              `}</style>
               <defs>
                 <path id="circlePath" d="M 12, 12 m -8.2, 0 a 8.2,8.2 0 1,1 16.4,0 a 8.2,8.2 0 1,1 -16.4,0" />
               </defs>
@@ -260,11 +270,11 @@ export default function App() {
               <text x="12" y="11.5" fontSize="4.2" fontWeight="bold" fontFamily="sans-serif" textAnchor="middle" fill="#ffffff">حلال</text>
               <text x="12" y="15" fontSize="2.0" fontWeight="900" fontFamily="sans-serif" textAnchor="middle" fill="#ffffff" letterSpacing="0.3">HALAL</text>
 
-              {/* Rotating circular text - repeated twice to wrap 360 degrees */}
-              <g style={{ animation: 'spin 20s linear infinite', transformOrigin: '12px 12px' }}>
-                <text fill="#ffffff" fontSize="0.75" fontWeight="bold" fontFamily="sans-serif" letterSpacing="0.12">
+              {/* Rotating circular text */}
+              <g className="rotating-text">
+                <text fill="#ffffff" fontSize="1.2" fontWeight="bold" fontFamily="sans-serif" letterSpacing="0.18">
                   <textPath href="#circlePath" startOffset="0%">
-                    НАТУРАЛЬНЫЕ ИНГРЕДИЕНТЫ • 100% • НАТУРАЛЬНЫЕ ИНГРЕДИЕНТЫ • 100% • 
+                    НАТУРАЛЬНЫЕ ИНГРЕДИЕНТЫ • 100% • 
                   </textPath>
                 </text>
               </g>
