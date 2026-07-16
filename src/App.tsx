@@ -63,6 +63,36 @@ const slides = [
     buttonLabel: 'АЙС ЛАТТЕ\nЗОЛОТОЙ\nКЛЮЧИК',
     shortLabel: 'ОРЕХОВЫЙ РАФ',
   },
+  {
+    id: 7,
+    image: '/bg_image_7.jpg',
+    thumb: '/thumb_tarragon.png',
+    titleColor: '#3cd070',
+    accentColor: '#3cd070',
+    descLeft: 'Освежающий таёжный лимонад на основе пряного эстрагона, спелого кисло-сладкого крыжовника и сочного лайма.',
+    buttonLabel: 'ТАРХУН\nКРЫЖОВНИК\nЛАЙМ',
+    shortLabel: 'ТАРХУН КРЫЖОВНИК ЛАЙМ',
+  },
+  {
+    id: 8,
+    image: '/bg_image_8.jpg',
+    thumb: '/thumb_apricot.png',
+    titleColor: '#fba834',
+    accentColor: '#fba834',
+    descLeft: 'Густой тропический коктейль из спелого абрикоса и экзотической маракуйи с приятной кислинкой и насыщенным ароматом.',
+    buttonLabel: 'АБРИКОС\nМАРАКУЙЯ',
+    shortLabel: 'АБРИКОС МАРАКУЙЯ',
+  },
+  {
+    id: 9,
+    image: '/bg_image_9.jpg',
+    thumb: '/thumb_pomegranate.png',
+    titleColor: '#e5383b',
+    accentColor: '#e5383b',
+    descLeft: 'Бодрящий летний напиток, сочетающий терпкий сок спелого граната с нежной сладостью лесной малины.',
+    buttonLabel: 'ГРАНАТ\nМАЛИНА',
+    shortLabel: 'ГРАНАТ МАЛИНА',
+  },
 ];
 
 // Helper to render grayscale PNGs as colored masks
